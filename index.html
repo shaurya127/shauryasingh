@@ -1,871 +1,397 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <meta charset="utf-8">
-  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Shaurya Pratap Singh</title>
+<meta name="description" content="Shaurya Pratap Singh — founder and CTO who builds and ships the whole company's software: Go backends, React and Expo apps, cloud infrastructure. Medyzen, Momo AI, TheVibeSecurity, Rahi, Hamsey.">
+<meta property="og:title" content="Shaurya Pratap Singh — Founder & CTO">
+<meta property="og:description" content="Builds and ships whole products: Go backends, React and Expo apps, cloud infra. Medyzen, Momo AI, TheVibeSecurity, Rahi, Hamsey.">
+<meta property="og:image" content="https://shaurya127.github.io/shauryasingh/assets/img/shaurya.png">
+<meta property="og:type" content="profile">
+<link rel="icon" href="assets/img/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#F2F3F0;--paper-2:#E9EBE6;--ink:#101418;--ink-2:#3A4047;--muted:#6B7280;--line:#D3D7CF;
+  --accent:#1D35D9;--accent-soft:#DDE2FB;--live:#17A05E;--past:#B9BEB6;
+  --display:"Bricolage Grotesque",system-ui,sans-serif;--body:"IBM Plex Sans",system-ui,sans-serif;--mono:"IBM Plex Mono",ui-monospace,monospace;
+  --max:1120px;--gutter:clamp(16px,4vw,48px);
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --paper:#0E1115;--paper-2:#151920;--ink:#EDEFEA;--ink-2:#C2C7BF;--muted:#8B9199;--line:#262C35;
+  --accent:#7A8DFF;--accent-soft:#1B2347;--live:#36C47E;--past:#3C434D;
+}}
+:root[data-theme="dark"]{
+  --paper:#0E1115;--paper-2:#151920;--ink:#EDEFEA;--ink-2:#C2C7BF;--muted:#8B9199;--line:#262C35;
+  --accent:#7A8DFF;--accent-soft:#1B2347;--live:#36C47E;--past:#3C434D;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--paper);color:var(--ink);font-family:var(--body);font-size:17px;line-height:1.55;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+a:focus-visible,button:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:4px}
+img{display:block;max-width:100%}
+.wrap{max-width:var(--max);margin:0 auto;padding:0 var(--gutter)}
+.mono{font-family:var(--mono);font-size:12.5px;letter-spacing:.02em;text-transform:uppercase;color:var(--muted)}
 
-  <title>Shaurya Pratap Singh</title>
-  <meta content="" name="description">
-  <meta content="" name="keywords">
+/* nav */
+.nav{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--paper) 86%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.nav .wrap{display:flex;align-items:center;justify-content:space-between;height:60px;gap:16px}
+.brand{white-space:nowrap;font-family:var(--display);font-weight:700;font-size:17px;letter-spacing:-.01em}
+.nav ul{display:flex;gap:22px;list-style:none}
+.nav li a{font-size:14px;color:var(--ink-2)}
+.nav li a:hover{color:var(--accent)}
+@media(max-width:640px){.nav li:nth-child(n+3){display:none}.nav ul{gap:14px}}
 
-  <!-- Favicons -->
-  <link href="assets/img/favicon.png" rel="icon">
-  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+/* hero */
+.hero{padding:clamp(56px,9vw,120px) 0 clamp(40px,6vw,72px)}
+.hero-grid{display:grid;grid-template-columns:1fr auto;gap:40px;align-items:end}
+@media(max-width:760px){.hero-grid{grid-template-columns:1fr}}
+.hero h1{font-family:var(--display);font-weight:800;font-size:clamp(40px,7.4vw,92px);line-height:.96;letter-spacing:-.035em;max-width:14ch;text-wrap:balance}
+.hero h1 em{font-style:normal;color:var(--accent)}
+.hero .lede{margin-top:28px;max-width:52ch;font-size:clamp(17px,1.6vw,20px);color:var(--ink-2)}
+.hero .meta{margin-top:20px;display:flex;flex-wrap:wrap;gap:8px 18px}
+.photo{width:clamp(140px,18vw,210px);aspect-ratio:1;border-radius:22px;overflow:hidden;background:var(--paper-2);border:1px solid var(--line);box-shadow:0 20px 50px -30px rgba(0,0,0,.45)}
+.photo img{width:100%;height:100%;object-fit:cover}
+.hero-reveal>*{opacity:0;transform:translateY(14px);animation:rise .7s cubic-bezier(.2,.7,.2,1) forwards}
+.hero-reveal>*:nth-child(2){animation-delay:.08s}.hero-reveal>*:nth-child(3){animation-delay:.16s}.hero-reveal>*:nth-child(4){animation-delay:.24s}
+@keyframes rise{to{opacity:1;transform:none}}
 
-  <!-- Google Fonts -->
-  <link
-    href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
-    rel="stylesheet">
+/* live board */
+.board{border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:var(--paper-2)}
+.board .wrap{padding-top:22px;padding-bottom:22px}
+.board-head{display:flex;justify-content:space-between;align-items:baseline;gap:12px;margin-bottom:14px}
+.board-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:10px}
+.tile{display:flex;align-items:center;gap:12px;padding:12px 14px;background:var(--paper);border:1px solid var(--line);border-radius:12px;transition:transform .2s,border-color .2s}
+.tile:hover{transform:translateY(-2px);border-color:var(--accent)}
+.tile img{width:28px;height:28px;border-radius:7px;background:#fff}
+.tile b{display:block;font-weight:600;font-size:14.5px;line-height:1.2}
+.tile span{display:block;font-size:12px;color:var(--muted);margin-top:2px}
+.dot{width:7px;height:7px;border-radius:50%;background:var(--live);margin-left:auto;flex:none;box-shadow:0 0 0 0 var(--live);animation:ping 2.2s infinite}
+@keyframes ping{0%{box-shadow:0 0 0 0 color-mix(in srgb,var(--live) 60%,transparent)}100%{box-shadow:0 0 0 9px transparent}}
 
-  <!-- Vendor CSS Files -->
-  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-  <link href="assets/vendor/icofont/icofont.min.css" rel="stylesheet">
-  <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
-  <link href="assets/vendor/venobox/venobox.css" rel="stylesheet">
-  <link href="assets/vendor/owl.carousel/assets/owl.carousel.min.css" rel="stylesheet">
-  <link href="assets/vendor/aos/aos.css" rel="stylesheet">
-  <link rel="stylesheet" href="/index.scss">
+/* sections */
+section{padding:clamp(56px,8vw,104px) 0}
+.sec-head{display:grid;grid-template-columns:200px 1fr;gap:24px;margin-bottom:40px;align-items:start}
+@media(max-width:760px){.sec-head{grid-template-columns:1fr;gap:8px}}
+h2{font-family:var(--display);font-weight:700;font-size:clamp(28px,3.6vw,44px);letter-spacing:-.03em;line-height:1.05;text-wrap:balance}
+.sec-head p{color:var(--ink-2);max-width:60ch;margin-top:10px}
 
-  <!-- Template Main CSS File -->
-  <link href="assets/css/style.css" rel="stylesheet">
+/* now */
+.now-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:14px}
+.card{position:relative;padding:26px;border:1px solid var(--line);border-radius:18px;background:var(--paper);display:flex;flex-direction:column;gap:12px;transition:border-color .2s,transform .2s}
+.card:hover{border-color:var(--accent);transform:translateY(-2px)}
+.card .top{display:flex;align-items:center;gap:12px}
+.card .top img{width:36px;height:36px;border-radius:9px;background:#fff}
+.card h3{font-family:var(--display);font-weight:700;font-size:22px;letter-spacing:-.02em;line-height:1.1}
+.card .role{font-size:12.5px;color:var(--muted)}
+.card p{color:var(--ink-2);font-size:15.5px}
+.card .stack{margin-top:auto;display:flex;flex-wrap:wrap;gap:6px}
+.chip{font-family:var(--mono);font-size:11.5px;padding:3px 8px;border-radius:999px;border:1px solid var(--line);color:var(--ink-2);background:var(--paper-2)}
+.card .go{font-family:var(--mono);font-size:12px;color:var(--accent);margin-bottom:-2px}
+.card.feature{grid-column:1/-1;background:var(--ink);color:var(--paper);border-color:var(--ink)}
+.card.feature p,.card.feature .role{color:color-mix(in srgb,var(--paper) 72%,transparent)}
+.card.feature .chip{border-color:color-mix(in srgb,var(--paper) 22%,transparent);background:transparent;color:var(--paper)}
+.card.feature .go{color:var(--paper)}
+.card.feature .sub{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:10px;margin-top:6px}
+.card.feature .sub div{padding:12px 14px;border:1px solid color-mix(in srgb,var(--paper) 18%,transparent);border-radius:12px;font-size:14px}
+.card.feature .sub b{display:block;font-weight:600;margin-bottom:2px}
+.card.feature .sub span{color:color-mix(in srgb,var(--paper) 65%,transparent);font-size:13px}
 
+/* ship log */
+.log{position:relative;display:grid;grid-template-columns:72px 1fr;gap:0}
+@media(max-width:640px){.log{grid-template-columns:40px 1fr}}
+.rail{position:relative}
+.rail::before{content:"";position:absolute;left:50%;top:0;bottom:0;width:2px;background:linear-gradient(var(--accent) 0,var(--accent) var(--fill,0%),var(--line) var(--fill,0%));transform:translateX(-50%)}
+.year{grid-column:1/-1;display:grid;grid-template-columns:72px 1fr;margin-top:30px}
+@media(max-width:640px){.year{grid-template-columns:40px 1fr}}
+.year:first-child{margin-top:0}
+.year .y{font-family:var(--display);font-weight:800;font-size:clamp(22px,3vw,34px);letter-spacing:-.03em;color:var(--accent);line-height:1;position:relative;padding-bottom:16px}
+.year .y::after{content:"";position:absolute;left:0;right:0;bottom:8px;border-top:1px dashed var(--line)}
+.entry{grid-column:1/-1;display:grid;grid-template-columns:72px 1fr;align-items:start}
+@media(max-width:640px){.entry{grid-template-columns:40px 1fr}}
+.entry .node{position:relative;height:100%;min-height:56px}
+.entry .node::before{content:"";position:absolute;left:50%;top:0;bottom:0;width:2px;background:var(--line);transform:translateX(-50%)}
+.entry .node::after{content:"";position:absolute;left:50%;top:18px;width:11px;height:11px;border-radius:50%;background:var(--paper);border:2.5px solid var(--past);transform:translateX(-50%);transition:border-color .3s,background .3s}
+.entry.live .node::after{border-color:var(--live);background:var(--live)}
+.entry.founder .node::after{border-color:var(--accent)}
+.entry.founder.live .node::after{background:var(--accent);border-color:var(--accent)}
+.entry .body{padding:10px 0 22px 10px;border-bottom:1px solid var(--line);display:grid;grid-template-columns:1fr auto;gap:6px 24px;align-items:baseline}
+@media(max-width:640px){.entry .body{grid-template-columns:1fr}}
+.entry h4{font-family:var(--display);font-weight:700;font-size:19px;letter-spacing:-.015em;display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.entry h4 a:hover{color:var(--accent)}
+.tag{font-family:var(--mono);font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;padding:2px 7px;border-radius:5px;border:1px solid var(--line);color:var(--muted)}
+.tag.f{border-color:var(--accent);color:var(--accent)}
+.tag.l{border-color:var(--live);color:var(--live)}
+.entry p{color:var(--ink-2);font-size:15px;max-width:66ch;grid-column:1}
+.entry .st{grid-column:2;grid-row:1/3;font-family:var(--mono);font-size:12px;color:var(--muted);text-align:right;line-height:1.7}
+@media(max-width:640px){.entry .st{grid-column:1;grid-row:auto;text-align:left}}
+.reveal{opacity:0;transform:translateY(12px);transition:opacity .6s,transform .6s}
+.reveal.in{opacity:1;transform:none}
+
+/* stack */
+.stack-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px}
+.stack-col{padding:22px;border:1px solid var(--line);border-radius:16px;background:var(--paper-2)}
+.stack-col h3{font-family:var(--mono);font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin-bottom:12px;font-weight:500}
+.stack-col ul{list-style:none;display:flex;flex-direction:column;gap:6px}
+.stack-col li{font-size:15.5px;display:flex;justify-content:space-between;gap:12px}
+.stack-col li small{font-family:var(--mono);font-size:11.5px;color:var(--muted)}
+
+/* open source / github */
+.gh{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+@media(max-width:760px){.gh{grid-template-columns:1fr}}
+.gh .stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.stat{padding:18px;border:1px solid var(--line);border-radius:14px}
+.stat b{display:block;font-family:var(--display);font-weight:800;font-size:34px;letter-spacing:-.03em;line-height:1}
+.stat span{display:block;margin-top:6px;font-size:12.5px;color:var(--muted)}
+.repos{display:flex;flex-direction:column;gap:8px}
+.repo{display:flex;justify-content:space-between;gap:12px;padding:12px 14px;border:1px solid var(--line);border-radius:12px;font-size:14.5px}
+.repo:hover{border-color:var(--accent)}
+.repo span{font-family:var(--mono);font-size:11.5px;color:var(--muted);white-space:nowrap}
+
+/* path */
+.path{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px}
+.path div{padding:20px;border-left:2px solid var(--line)}
+.path b{display:block;font-family:var(--display);font-weight:700;font-size:18px;letter-spacing:-.015em}
+.path span{display:block;color:var(--muted);font-size:13px;font-family:var(--mono);margin:4px 0 8px}
+.path p{color:var(--ink-2);font-size:15px}
+
+/* contact */
+.contact{background:var(--ink);color:var(--paper)}
+.contact h2{font-size:clamp(34px,5.4vw,64px);max-width:16ch}
+.contact .links{margin-top:30px;display:flex;flex-wrap:wrap;gap:12px}
+.contact .links a{padding:12px 18px;border:1px solid color-mix(in srgb,var(--paper) 30%,transparent);border-radius:999px;font-size:15px;transition:background .2s,color .2s}
+.contact .links a:hover{background:var(--paper);color:var(--ink)}
+.contact .links a.primary{background:var(--accent);border-color:var(--accent);color:#fff}
+footer{padding:26px 0;font-size:13px;color:var(--muted);display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px}
+.theme-btn{background:none;border:1px solid var(--line);color:var(--ink-2);border-radius:999px;padding:6px 12px;font:inherit;font-size:13px;cursor:pointer}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.hero-reveal>*,.reveal{opacity:1;transform:none}}
+</style>
 </head>
-
 <body>
 
+<nav class="nav"><div class="wrap">
+  <a class="brand" href="#top">Shaurya Pratap Singh</a>
+  <ul>
+    <li><a href="#now">Now</a></li>
+    <li><a href="#log">Ship log</a></li>
+    <li><a href="#stack">Stack</a></li>
+    <li><a href="#code">Code</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <button class="theme-btn" id="theme" aria-label="Toggle colour theme">Dark</button>
+</div></nav>
 
-
-
-
-  
-
-  <!-- ======= Mobile nav toggle button ======= -->
-  <button type="button" class="mobile-nav-toggle d-xl-none"><i class="icofont-navigation-menu"></i></button>
-
-  <!-- ======= Header ======= -->
-  <header id="header">
-    <div class="d-flex flex-column">
-
-      <div class="profile">
-        <img src="assets/img/s1.jpg" alt="" class="img-fluid ">
-        <h1 class="text-light"><a href="index.html">Shaurya Pratap Singh</a></h1>
-        <div class="social-links mt-3 text-center">
-          <a href="https://github.com/shaurya127" class="github"><i class="bx bxl-github"></i></a>
-          <a href="https://www.linkedin.com/in/shaurya-pratap-singh-5263981b1/" class="linkedin"><i
-            class="bx bxl-linkedin"></i></a>
-          <a href="https://www.facebook.com/shauryapratap.singh.3914207" class="facebook"><i class="bx bxl-facebook"></i></a>
-          <a href="https://www.linkedin.com/in/shaurya-pratap-singh-5263981b1/" class="instagram"><i
-              class="bx bxl-instagram"></i></a>
-              <a href="https://mobile.twitter.com/SHAURYA127" class="twitter"><i
-                class="bx bxl-twitter"></i></a>
-          
-          
-        </div>
+<header class="hero" id="top"><div class="wrap">
+  <div class="hero-grid">
+    <div class="hero-reveal">
+      <p class="mono">Founder &amp; CTO · Jaipur, India</p>
+      <h1>I build the <em>whole</em> company's software, then ship it.</h1>
+      <p class="lede">Go on the backend, React and Expo on every screen, the cloud from Terraform up. Since 2020 I have taken fourteen products from a blank repo to real users, most of them as the founding engineer.</p>
+      <div class="meta">
+        <span class="mono">Hamsey · Medyzen · Momo AI · TheVibeSecurity · Rahi</span>
       </div>
-
-      <nav class="nav-menu">
-        <ul>
-          <li class="active"><a href="index.html"><i class="bx bx-home"></i> <span>Home</span></a></li>
-          <li><a href="#about"><i class="bx bx-user"></i> <span>About</span></a></li>
-          <li><a href="#resume"><i class="bx bx-file-blank"></i> <span>Resume</span></a></li>
-          <li><a href="#portfolio"><i class="bx bx-book-content"></i> Portfolio</a></li>
-          <li><a href="#services"><i class="bx bx-server"></i> Services</a></li>
-          <li><a href="#contact"><i class="bx bx-envelope"></i> Contact</a></li>
-
-        </ul>
-      </nav><!-- .nav-menu -->
-      <button type="button" class="mobile-nav-toggle d-xl-none"><i class="icofont-navigation-menu"></i></button>
-
     </div>
-  </header>
+    <div class="photo"><img src="assets/img/shaurya.png" alt="Shaurya Pratap Singh" width="400" height="400"></div>
+  </div>
+</div></header>
 
+<div class="board"><div class="wrap">
+  <div class="board-head">
+    <span class="mono">Live right now</span>
+    <span class="mono" id="checked">Checked 16 Oct 2026</span>
+  </div>
+  <div class="board-grid">
+    <a class="tile" href="https://www.medyzen.in" target="_blank" rel="noopener"><img src="https://www.google.com/s2/favicons?domain=medyzen.in&sz=64" alt=""><div><b>Medyzen</b><span>medyzen.in</span></div><i class="dot"></i></a>
+    <a class="tile" href="https://askmomo.app" target="_blank" rel="noopener"><img src="https://www.google.com/s2/favicons?domain=askmomo.app&sz=64" alt=""><div><b>Momo AI</b><span>askmomo.app</span></div><i class="dot"></i></a>
+    <a class="tile" href="https://thevibesecurity.com" target="_blank" rel="noopener"><img src="https://www.google.com/s2/favicons?domain=thevibesecurity.com&sz=64" alt=""><div><b>TheVibeSecurity</b><span>thevibesecurity.com</span></div><i class="dot"></i></a>
+    <a class="tile" href="https://rahi.club" target="_blank" rel="noopener"><img src="https://www.google.com/s2/favicons?domain=rahi.club&sz=64" alt=""><div><b>Rahi</b><span>rahi.club</span></div><i class="dot"></i></a>
+    <a class="tile" href="https://clinic.medyzen.in" target="_blank" rel="noopener"><img src="https://www.google.com/s2/favicons?domain=medyzen.in&sz=64" alt=""><div><b>Clinic OS</b><span>clinic.medyzen.in</span></div><i class="dot"></i></a>
+    <a class="tile" href="https://www.rbulance.com" target="_blank" rel="noopener"><img src="https://www.google.com/s2/favicons?domain=rbulance.com&sz=64" alt=""><div><b>Rbulance</b><span>rbulance.com</span></div><i class="dot"></i></a>
+  </div>
+</div></div>
 
-
-   <section id="hero" class="d-flex flex-column justify-content-center align-items-center">
-    <div class="hero-container" data-aos="fade-in">
-      <h1>Shaurya Pratap Singh</h1>
-      <p>I'm <span class="typed" data-typed-items="Comptitive Coder,Android Developer,Web Developer,Nitian"></span></p>
-    </div>
-  </section>
-
-  <main id="main">
-
-
-
-    
-    <section id="about" class="about">
-      <div class="container">
-
-
-        <img src="/assets/img/about-us.png" alt="">
-
-        <div class="section-title">
-          <h2 style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">Let me introduce myself</h2>
-          <p>Hi, I am Shaurya an engineering student at MNIT Jaipur.Currently I have studying in Electrical Engineering.I wander for new things,learning new programming language and making programs to solve modern world problems intrigues me.I believe we
-             should make everyday worthly by learning new things,building our skills and sometimes just hang out and chill with freinds..</p>
-        </div>
-
-        <div class="row">
-          <div class="col-lg-4" data-aos="fade-right">
-            <img src="assets/img/s2.jpg" class="img-fluid" alt="">
-          </div>
-          <div class="col-lg-8 pt-4 pt-lg-0 content" data-aos="fade-left">
-            <h3>Full Stack Developer Developer &amp; Comptitive Coder.</h3>
-            <p class="font-italic">
-              Following is the summary of my bio.
-            </p>
-            <div class="row">
-              <div class="col-lg-8">
-                <ul>
-                  <li><i class="icofont-rounded-right"></i> <strong>Birthday:</strong> 26 July, 2000</li>
-                  <li><i class="icofont-rounded-right"></i> <strong>Email:</strong> shaurya1272000@gmail.com</li>
-
-                  <li><i class="icofont-rounded-right"></i> <strong>City:</strong> City : Ambedkarnagar UP, India</li>
-                </ul>
-              </div>
-              <div class="col-lg-4">
-                <ul>
-                  <li><i class="icofont-rounded-right"></i> <strong>Age:</strong> 20</li>
-                  <li><i class="icofont-rounded-right"></i> <strong>Degree:</strong> Undergraduate</li>
-                  <!-- <li><i class="icofont-rounded-right"></i> <strong>Phone:</strong> +91 9547096726</li> -->
-                </ul>
-              </div>
-            </div>
-            <p>
-
-            </p>
-          </div>
-        </div>
-
+<section id="now"><div class="wrap">
+  <div class="sec-head">
+    <span class="mono">Now · 2025–2026</span>
+    <div><h2>Five companies, one engineer across all of them.</h2><p>Each of these runs on code I wrote end to end: schema, API, apps, infra, CI, and the on-call that follows. Click through, they are real.</p></div>
+  </div>
+  <div class="now-grid">
+    <a class="card feature reveal" href="https://www.medyzen.in" target="_blank" rel="noopener">
+      <span class="go">medyzen.in ↗</span>
+      <div class="top"><img src="https://www.google.com/s2/favicons?domain=medyzen.in&sz=64" alt=""><div><h3>Medyzen</h3><div class="role">Founder &amp; CTO · healthcare, India</div></div></div>
+      <p>Zero-investment managed pharmacy inside hospitals: a patient app, in-hospital kiosk, rider app, and three operator panels on one Go backend, with real payments, prescription processing and DPDP-grade patient data handling.</p>
+      <div class="sub">
+        <div><b>Pharmacy platform</b><span>Patient, kiosk and delivery apps + hospital, warehouse and super-admin panels</span></div>
+        <div><b>Clinic OS</b><span>Clinic record-keeping EMR with row-level tenancy and an offline PWA</span></div>
+        <div><b>DoctorClub</b><span>Private professional network and mutual-aid platform for licensed doctors</span></div>
+        <div><b>Internal platform</b><span>API test lab, cost engine, worklog, hiring ATS, learning portal</span></div>
       </div>
-    </section><!-- End About Section -->
-
-
-
-   
-    <section id="skills" class="skills section-bg">
-      <div class="container">
-
-        <div class="section-title">
-          <h2>Skills</h2>
-        </div>
-
-        <div class="row skills-content">
-
-          <div class="col-lg-6" data-aos="fade-up">
-
-
-
-            <div class="progress">
-              <span class="skill">C++ <i class="val">90%</i></span>
-              <div class="progress-bar-wrap">
-                <div class="progress-bar" role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100">
-                </div>
-              </div>
-            </div>
-
-            <div class="progress">
-              <span class="skill">Python <i class="val">70%</i></span>
-              <div class="progress-bar-wrap">
-                <div class="progress-bar" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100">
-                </div>
-              </div>
-            </div>
-
-            <div class="progress">
-              <span class="skill">Web Developement(Full-Stack) <i class="val">80%</i></span>
-              <div class="progress-bar-wrap">
-                <div class="progress-bar" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100">
-                </div>
-              </div>
-            </div>
-
-            <div class="progress">
-              <span class="skill">Android Developement(Full-Stack) <i class="val">70%</i></span>
-              <div class="progress-bar-wrap">
-                <div class="progress-bar" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100">
-                </div>
-              </div>
-            </div>
-
-            <div class="progress">
-              <span class="skill">HTML <i class="val">80%</i></span>
-              <div class="progress-bar-wrap">
-                <div class="progress-bar" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100">
-                </div>
-              </div>
-            </div>
-
-            <div class="progress">
-              <span class="skill">CSS <i class="val">60%</i></span>
-              <div class="progress-bar-wrap">
-                <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100">
-                </div>
-              </div>
-            </div>
-
-            <div class="progress">
-              <span class="skill">Bootstrap <i class="val">80%</i></span>
-              <div class="progress-bar-wrap">
-                <div class="progress-bar" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100">
-                </div>
-              </div>
-            </div>
-
-            <div class="progress">
-              <span class="skill">Javascript <i class="val">70%</i></span>
-              <div class="progress-bar-wrap">
-                <div class="progress-bar" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100">
-                </div>
-              </div>
-            </div>
-
-            <div class="progress">
-              <span class="skill">Mathematics <i class="val">75%</i></span>
-              <div class="progress-bar-wrap">
-                <div class="progress-bar" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100">
-                </div>
-              </div>
-            </div>
-
-            <div class="progress">
-              <span class="skill">Android Studio<i class="val">80%</i></span>
-              <div class="progress-bar-wrap">
-                <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100">
-                </div>
-              </div>
-            </div>
-
-            <div class="progress">
-              <span class="skill">Machine learning <i class="val">35%</i></span>
-              <div class="progress-bar-wrap">
-                <div class="progress-bar" role="progressbar" aria-valuenow="35" aria-valuemin="0" aria-valuemax="100">
-                </div>
-              </div>
-              
-            </div>
-            
-
-          </div>
-
-          <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
-            <div class="progress">
-              <span class="skill">Data-structure & Algorithms <i class="val">85%</i></span>
-              <div class="progress-bar-wrap">
-                <div class="progress-bar" role="progressbar" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100">
-                </div>
-              </div>
-            </div>
-
-            <div class="progress">
-              <span class="skill">Node.js <i class="val">80%</i></span>
-              <div class="progress-bar-wrap">
-                <div class="progress-bar" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100">
-                </div>
-              </div>
-            </div>
-
-            <div class="progress">
-              <span class="skill">React.js <i class="val">30%</i></span>
-              <div class="progress-bar-wrap">
-                <div class="progress-bar" role="progressbar" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100">
-                </div>
-              </div>
-            </div>
-
-            <div class="progress">
-              <span class="skill">MongoDB <i class="val">80%</i></span>
-              <div class="progress-bar-wrap">
-                <div class="progress-bar" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100">
-                </div>
-              </div>
-            </div>
-
-            <div class="progress">
-              <span class="skill">DynamoDB <i class="val">50%</i></span>
-              <div class="progress-bar-wrap">
-                <div class="progress-bar" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">
-                </div>
-              </div>
-            </div>
-            <div class="progress">
-              <span class="skill">Neo4j <i class="val">40%</i></span>
-              <div class="progress-bar-wrap">
-                <div class="progress-bar" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100">
-                </div>
-              </div>
-            </div>
-
-
-            <div class="progress">
-              <span class="skill"> AWS S3<i class="val">70%</i></span>
-              <div class="progress-bar-wrap">
-                <div class="progress-bar" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100">
-                </div>
-              </div>
-            </div>
-            <div class="progress">
-              <span class="skill">AWS Lambda <i class="val">70%</i></span>
-              <div class="progress-bar-wrap">
-                <div class="progress-bar" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100">
-                </div>
-              </div>
-            </div>
-
-            <div class="progress">
-              <span class="skill">React Native<i class="val">60%</i></span>
-              <div class="progress-bar-wrap">
-                <div class="progress-bar" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100">
-                </div>
-              </div>
-            </div>
-
-            <div class="progress">
-              <span class="skill">Flutter<i class="val">70%</i></span>
-              <div class="progress-bar-wrap">
-                <div class="progress-bar" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100">
-                </div>
-              </div>
-            </div>
-
-            <div class="progress">
-              <span class="skill">Solidity<i class="val">80%</i></span>
-              <div class="progress-bar-wrap">
-                <div class="progress-bar" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100">
-                </div>
-              </div>
-            </div>
-
-            <div class="progress">
-              <span class="skill">Blockchain<i class="val">50%</i></span>
-              <div class="progress-bar-wrap">
-                <div class="progress-bar" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100">
-                </div>
-              </div>
-            </div>
-
-
-           
-
-            
-
-            
-            </div>
-
-
-          </div>
-
-        </div>
-
-      </div>
-    </section><!-- End Skills Section -->
-
-    <!-- ======= Resume Section ======= -->
-    <section id="resume" class="resume">
-      <div class="container">
-
-        <div class="section-title">
-          <h2>Resume</h2>
-        </div>
-
-        <div class="row">
-          <div class="col-lg-6" data-aos="fade-up">
-            <h3 class="resume-title">Sumary</h3>
-            <div class="resume-item pb-0">
-              <h4>Shaurya Pratap Singh</h4>
-              <p><em>Innovative and deadline-driven Website and Android Developer, with 2+ years of coding experience. </em></p>
-              <ul>
-                <li>Ambedkarnagar UP, India</li>
-                <li>(+91) 9140257102</li>
-                <li>shaurya1272000@gmail.com</li>
-              </ul>
-            </div>
-
-            <h3 class="resume-title">Education</h3>
-            <div class="resume-item">
-              <h4>B.Tech(hons.) Electrical Engineering</h4>
-              <h5>2019-present</h5>
-              <p><em>National Institute of Technology,Jaipur, India</em></p>
-            </div>
-            <div class="resume-item">
-              <h4>Senior Secondary (XII)</h4>
-              <h5>2015 - 2017</h5>
-              <p><em>JRVBSIC Ambedkarnagar</em></p>
-              <p>Stream: Science</p>
-              <p>Aggregate: 84%</p>
-            </div>
-            <div class="resume-item">
-              <h4>Secondary (X)</h4>
-              <h5>2013 - 2015</h5>
-              <p><em>AKIC Ambedkarnagar</em></p>
-              <p>Aggregate: 86%</p>
-            </div>
-          </div>
-          <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
-            <h3 class="resume-title">Professional Experience</h3>
-            <div class="resume-item">
-              <h4>Full Stack Developer</h4>
-              <h5>Mar, 2021 - October 2021 </h5>
-              <p><em>Relato Technology Pvt. Ltd. </em></p>
-              <ul>
-                <li>Worked from home</li>
-                <li>Made REST APIs and documented on postman. </li>
-                <li>Developed a Social Media Android App (<a href="">Rsocial</a> ) </li>
-                <li>Fixed minor bugs.</li>
-              </ul>
-            </div>
-
-            <div class="resume-item">
-              <h4>Full Stack Developer</h4>
-              <h5>October 2021- May 2022</h5>
-              <p><em>Create Protocol</em></p>
-              <ul>
-                <li>Worked from home</li>
-                <li>Made Website Frontend side and API Integration</li>
-                <li>Developed a NFT Marketplace (<a href="">mercado studio</a> ) </li>
-                
-              </ul>
-            </div>
-            
-            
-            
-          </div>
-        </div>
-
-      </div>
-    </section><!-- End Resume Section -->
-
-    <!-- ======= Portfolio Section ======= -->
-    <section id="portfolio" class="portfolio section-bg">
-      <div class="container">
-
-        <div class="section-title">
-          <h2>Work samples</h2>
-        </div>
-
-        <div class="row" data-aos="fade-up">
-          <div class="col-lg-12 d-flex justify-content-center">
-            <ul id="portfolio-flters">
-              <li data-filter="*" class="filter-active">All</li>
-              <li data-filter=".filter-game">Games</li>
-              <li data-filter=".filter-web">Web</li>
-              <li data-filter=".filter-android">Android</li>
-      
-            </ul>
-          </div>
-        </div>
-
-        
-
-        <div class="row portfolio-container" data-aos="fade-up" data-aos-delay="100">
-
-          <div class="col-lg-4 col-md-6 portfolio-item filter-game">
-            <div class="portfolio-wrap">
-              <img src="assets/img/portfolio/dice1.jfif" class="img-fluid" alt="">
-              <div class="portfolio-links">
-                <a href="https://github.com/shaurya127/rolling_dice_game_flutter" title="More Details"><i
-                    class="bx bx-link"></i></a>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6 portfolio-item filter-android">
-            <div class="portfolio-wrap">
-              <img src="assets/img/portfolio/love.png" class="img-fluid" alt="">
-              <div class="portfolio-links">
-                <a href="https://github.com/shaurya127/loev_calculator_android" title="More Details"><i
-                    class="bx bx-link"></i></a>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6 portfolio-item filter-android">
-            <div class="portfolio-wrap">
-              <img src="assets/img/portfolio/quiz.png" class="img-fluid" alt="">
-              <div class="portfolio-links">
-                <a href="https://github.com/shaurya127/QuizStar_By_Shaurya" title="More Details"><i
-                    class="bx bx-link"></i></a>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6 portfolio-item  filter-game">
-            <div class="portfolio-wrap">
-              <img src="assets/img/portfolio/snake.jfif" class="img-fluid" alt="">
-              <div class="portfolio-links">
-                <a href="https://github.com/shaurya127/Snake_game_using_python" title="More Details"><i
-                    class="bx bx-link"></i></a>
-              </div>
-            </div>
-          </div>
-
-          <!-- <div class="col-lg-4 col-md-6 portfolio-item filter-card">
-            <div class="portfolio-wrap">
-              <img src="assets/img/portfolio/portfolio-7.jpg" class="img-fluid" alt="">
-              <div class="portfolio-links">
-                <a href="https://github.com/sudip-mondal-2002/Virtual-Assistant-Bruno" title="More Details"><i
-                    class="bx bx-link"></i></a>
-              </div>
-            </div>
-          </div> -->
-
-          <div class="col-lg-4 col-md-6 portfolio-item filter-web">
-            <div class="portfolio-wrap">
-              <img src="assets/img/portfolio/notes.png" class="img-fluid" alt="">
-              <div class="portfolio-links">
-                <a href="https://codewithshauryanotesapp.herokuapp.com/" title="More Details"><i
-                    class="bx bx-link"></i></a>
-              </div>
-            </div>
-          </div>
-<!-- 
-          <div class="col-lg-4 col-md-6 portfolio-item filter-web">
-            <div class="portfolio-wrap">
-              <img src="assets/img/portfolio/portfolio-14.jpg" class="img-fluid" alt="">
-              <div class="portfolio-links">
-                <a href="https://daily-journals-sudipmondal.herokuapp.com/" title="More Details"><i
-                    class="bx bx-link"></i></a>
-              </div>
-            </div>
-          </div> -->
-
-          <!-- <div class="col-lg-4 col-md-6 portfolio-item filter-game">
-            <div class="portfolio-wrap">
-              <img src="assets/img/portfolio/portfolio-2.jpg" class="img-fluid" alt="">
-              <div class="portfolio-links">
-                <a href="https://github.com/sudip-mondal-2002/rock-paper-scissor" title="More Details"><i
-                    class="bx bx-link"></i></a>
-              </div>
-            </div>
-          </div> -->
-
-          <!-- <div class="col-lg-4 col-md-6 portfolio-item filter-game">
-            <div class="portfolio-wrap">
-              <img src="assets/img/portfolio/portfolio-3.jpg" class="img-fluid" alt="">
-              <div class="portfolio-links">
-                <a href="https://github.com/sudip-mondal-2002/snakegame" title="More Details"><i
-                    class="bx bx-link"></i></a>
-              </div>
-            </div>
-          </div> -->
-
-          <!-- <div class="col-lg-4 col-md-6 portfolio-item filter-web">
-            <div class="portfolio-wrap">
-              <img src="assets/img/portfolio/portfolio-15.jpg" class="img-fluid" alt="">
-              <div class="portfolio-links">
-                <a href="https://makeurresume-sudipmondal.herokuapp.com/" title="More Details"><i
-                    class="bx bx-link"></i></a>
-              </div>
-            </div>
-          </div> -->
-
-          <!-- <div class="col-lg-4 col-md-6 portfolio-item filter-game">
-            <div class="portfolio-wrap">
-              <img src="assets/img/portfolio/portfolio-4.jpg" class="img-fluid" alt="">
-              <div class="portfolio-links">
-                <a href="https://github.com/sudip-mondal-2002/bingo-game" title="More Details"><i
-                    class="bx bx-link"></i></a>
-              </div>
-            </div>
-          </div> -->
-
-          <div class="col-lg-4 col-md-6 portfolio-item filter-web">
-            <div class="portfolio-wrap">
-              <img src="assets/img/portfolio/todo.png" class="img-fluid" alt="">
-              <div class="portfolio-links">
-                <a href="https://github.com/shaurya127/todoapp" title="More Details"><i
-                    class="bx bx-link"></i></a>
-              </div>
-            </div>
-          </div>
-<!-- 
-          <div class="col-lg-4 col-md-6 portfolio-item filter-game">
-            <div class="portfolio-wrap">
-              <img src="assets/img/portfolio/portfolio-5.jpg" class="img-fluid" alt="">
-              <div class="portfolio-links">
-                <a href="https://github.com/sudip-mondal-2002/FITS" title="More Details"><i class="bx bx-link"></i></a>
-              </div>
-            </div>
-          </div> -->
-
-          <!-- <div class="col-lg-4 col-md-6 portfolio-item filter-game">
-            <div class="portfolio-wrap">
-              <img src="assets/img/portfolio/portfolio-6.jpg" class="img-fluid" alt="">
-              <div class="portfolio-links">
-                <a href="https://github.com/sudip-mondal-2002/chessgame" title="More Details"><i
-                    class="bx bx-link"></i></a>
-              </div>
-            </div>
-          </div> -->
-
-          <!-- <div class="col-lg-4 col-md-6 portfolio-item filter-web">
-            <div class="portfolio-wrap">
-              <img src="assets/img/portfolio/portfolio-12.jpg" class="img-fluid" alt="">
-              <div class="portfolio-links">
-                <a href="http://codewithshaurya.me/drumkit/" title="More Details"><i
-                    class="bx bx-link"></i></a>
-              </div>
-            </div>
-          </div> -->
-
-          <!-- <div class="col-lg-4 col-md-6 portfolio-item filter-web">
-            <div class="portfolio-wrap">
-              <img src="assets/img/portfolio/portfolio-9.jpg" class="img-fluid" alt="">
-              <div class="portfolio-links">
-                <a href="https://sudip-mondal-2002.github.io/tindog-commercial-website/" title="More Details"><i
-                    class="bx bx-link"></i></a>
-              </div>
-            </div>
-          </div> -->
-
-          <!-- <div class="col-lg-4 col-md-6 portfolio-item filter-card">
-            <div class="portfolio-wrap">
-              <img src="assets/img/portfolio/portfolio-17.jpg" class="img-fluid" alt="">
-              <div class="portfolio-links">
-                <a href="https://github.com/sudip-mondal-2002/emotion-detector" title="More Details"><i
-                    class="bx bx-link"></i></a>
-              </div>
-            </div>
-          </div> -->
-
-          <!-- <div class="col-lg-4 col-md-6 portfolio-item filter-web">
-            <div class="portfolio-wrap">
-              <img src="assets/img/portfolio/portfolio-16.jpg" class="img-fluid" alt="">
-              <div class="portfolio-links">
-                <a href="https://note-keeper-sudipmondal.herokuapp.com/" title="More Details"><i
-                    class="bx bx-link"></i></a>
-              </div>
-            </div>
-          </div> -->
-
-          <div class="col-lg-4 col-md-6 portfolio-item filter-web">
-            <div class="portfolio-wrap">
-              <img src="assets/img/portfolio/veera.png" class="img-fluid" alt="">
-              <div class="portfolio-links">
-                <a href="https://veerabhoomi.herokuapp.com/" title="More Details"><i
-                    class="bx bx-link"></i></a>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6 portfolio-item filter-web">
-            <div class="portfolio-wrap">
-              <img src="assets/img/portfolio/chat.png" class="img-fluid" alt="">
-              <div class="portfolio-links">
-                <a href="http://shauryachatapp.herokuapp.com/" title="More Details"><i
-                    class="bx bx-link"></i></a>
-              </div>
-            </div>
-          </div>
-
-        </div>
-
-      </div>
-    </section><!-- End Portfolio Section -->
-
-    <!-- ======= Services Section ======= -->
-    <section id="services" class="services">
-      <div class="container">
-
-        <div class="section-title">
-          <h2>Services</h2>
-          <p>Trying to provide best services within reseaonable price. Contact me if you need any service.</p>
-        </div>
-
-        <div class="row">
-          <div class="col-lg-4 col-md-6 icon-box" data-aos="fade-up">
-            <div class="icon"><i class="icofont-computer"></i></div>
-            <h4 class="title">Website designing</h4>
-            <p class="description">Design and code peronal and commercial websites as per need.</p>
-          </div>
-
-          
-
-          <div class="col-lg-4 col-md-6 icon-box" data-aos="fade-up" data-aos-delay="100">
-            <div class="icon"><i class="icofont-chart-bar-graph"></i></div>
-            <h4 class="title">Android Developer</h4>
-            <p class="description">Design and code peronal and commercial Android as per need.</p>
-          </div>
-         
-        </div>
-
-      </div>
-    </section><!-- End Services Section -->
-
-
-
-
-    <main role="main" class="container">
-      
-<!--       <div class="title-1">
-        <h1>My Gallery</h1>
-      </div> -->
-      
-      <!-- Multiple Images -->
-<!--         <div class="images-content">
-        	<div class="container-fluid">
-        		<div id="carousel-example-1" class="carousel slide" data-ride="carousel">
-        			<div class="carousel-inner row w-100 mx-auto" role="listbox">
-            	<div class="carousel-item col-12 col-sm-6 col-md-4 col-lg-3 active">
-							<img src="/assets/img/s1.jpg" class="img-fluid mx-auto d-block" alt="img1">
-						</div>
-						<div class="carousel-item col-12 col-sm-6 col-md-4 col-lg-3">
-							<img src="/assets/img/s2.jpg" class="img-fluid mx-auto d-block" alt="img2">
-						</div>
-						<div class="carousel-item col-12 col-sm-6 col-md-4 col-lg-3">
-							<img src="/assets/img/s4.jpg" class="img-fluid mx-auto d-block" alt="img3">
-						</div>
-						<div class="carousel-item col-12 col-sm-6 col-md-4 col-lg-3">
-							<img src="/assets/img/s5.jpg" class="img-fluid mx-auto d-block" alt="img4">
-						</div>
-            <div class="carousel-item col-12 col-sm-6 col-md-4 col-lg-3">
-							<img src="/assets/img/s5.jpg" class="img-fluid mx-auto d-block" alt="img4">
-						</div>
-					
-        		</div>
-        			<!-- <a class="carousel-control-prev" href="#carousel-example-1" role="button" data-slide="prev">
-						<span class="carousel-control-prev-icon" aria-hidden="true"></span>
-						<span class="sr-only">Previous</span>
-					</a> -->
-					<!-- <a class="carousel-control-next" href="#carousel-example-1" role="button" data-slide="next">
-						<span class="carousel-control-next-icon" aria-hidden="true"></span>
-						<span class="sr-only">Next</span>
-					</a> -->
-        		</div>
-        	</div>
-        </div> 
-        <!-- /Multiple Images -->
-      
-  
-         
-         
-        
-          
-        
-        
-        <!-- <a class="carousel-control-prev" href="#carousel-example-2" role="button" data-slide="prev">
-					<span class="carousel-control-prev-icon" aria-hidden="true"></span>
-					<span class="sr-only">Previous</span>
-				</a>
-				<a class="carousel-control-next" href="#carousel-example-2" role="button" data-slide="next">
-					<span class="carousel-control-next-icon" aria-hidden="true"></span>
-					<span class="sr-only">Next</span>
-				</a> -->
-       </div>
-      </div>
-     </div>
-     <!-- /Multiple Cards -->
-        
-
-    </main><!-- /.container -->
-
-
-
-
-
-
-
-
-
-
-    <!-- ======= Contact Section ======= -->
-    <section id="contact" class="contact">
-      <div class="container">
-
-        <div class="section-title">
-          <h2>Contact</h2>
-        </div>
-
-        <div class="row" data-aos="fade-in">
-
-          <div class="col-lg-5 d-flex align-items-stretch">
-            <div class="info">
-              <div class="address">
-                <i class="icofont-google-map"></i>
-                <h4>Location:</h4>
-                <p>Ambedkarnagar UP, India</p>
-              </div>
-
-              <div class="email">
-                <i class="icofont-envelope"></i>
-                <h4>Email:</h4>
-                <p>shaurya1272000@gmail.com</p>
-              </div>
-
-              <div class="phone">
-                <i class="icofont-phone"></i>
-                <h4>Call:</h4>
-                <p>+91 9140257102</p>
-              </div>
-
-            </div>
-
-          </div>
-
-
-
-        </div>
-
-      </div>
-    </section><!-- End Contact Section -->
-
-  </main><!-- End #main -->
-
-  <!-- ======= Footer ======= -->
-  <footer id="footer">
-    <div class="container">
-      <div class="copyright">
-        
-        &copy; Copyright <strong><span>Shaurya Pratap Singh</span></strong>
-      </div>
-      <a href='http://www.freevisitorcounters.com'>free visitor counters</a> <script type='text/javascript' src='https://www.freevisitorcounters.com/auth.php?id=524d018fb729cd8633cf938b612a98df461355f0'></script>
-      <script type="text/javascript" src="https://www.freevisitorcounters.com/en/home/counter/833929/t/5"></script>
-  </footer><!-- End  Footer -->
-
-  <a href="#" class="back-to-top"><i class="icofont-simple-up"></i></a>
-
-  <!-- Vendor JS Files -->
-  <script src="assets/vendor/jquery/jquery.min.js"></script>
-  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="assets/vendor/jquery.easing/jquery.easing.min.js"></script>
-  <script src="assets/vendor/php-email-form/validate.js"></script>
-  <script src="assets/vendor/waypoints/jquery.waypoints.min.js"></script>
-  <script src="assets/vendor/counterup/counterup.min.js"></script>
-  <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
-  <script src="assets/vendor/venobox/venobox.min.js"></script>
-  <script src="assets/vendor/owl.carousel/owl.carousel.min.js"></script>
-  <script src="assets/vendor/typed.js/typed.min.js"></script>
-  <script src="assets/vendor/aos/aos.js"></script>
-
-  <!-- Template Main JS File -->
-  <script src="assets/js/main.js"></script>
-
-  <!--Start of Tawk.to Script-->
-<script type="text/javascript">
-  var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
-  (function(){
-  var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
-  s1.async=true;
-  s1.src='https://embed.tawk.to/60ab3346a4114e480ad080a4/1f6ec0jj9';
-  s1.charset='UTF-8';
-  s1.setAttribute('crossorigin','*');
-  s0.parentNode.insertBefore(s1,s0);
-  })();
-  </script>
-  <!--End of Tawk.to Script-->
-
-  <div style="background-color: #0c3f66;">
-    
+      <div class="stack"><span class="chip">Go</span><span class="chip">Postgres</span><span class="chip">React Native · Expo</span><span class="chip">React · AntD</span><span class="chip">Next.js</span><span class="chip">AWS · Terraform</span><span class="chip">Razorpay</span></div>
+    </a>
+    <a class="card reveal" href="https://github.com/Hamsey-Org" target="_blank" rel="noopener">
+      <span class="go">github ↗</span>
+      <div class="top"><div><h3>Hamsey</h3><div class="role">Co-founder &amp; CTO · mobile</div></div></div>
+      <p>Consumer mobile app backed by a fleet of Go services: core API, chat microservice, video processor, background workers, and an open-source CodePush-compatible OTA server for React Native.</p>
+      <div class="stack"><span class="chip">Go</span><span class="chip">Expo</span><span class="chip">Microservices</span><span class="chip">OTA</span></div>
+    </a>
+    <a class="card reveal" href="https://askmomo.app" target="_blank" rel="noopener">
+      <span class="go">askmomo.app ↗</span>
+      <div class="top"><img src="https://www.google.com/s2/favicons?domain=askmomo.app&sz=64" alt=""><div><h3>Momo AI</h3><div class="role">Founder · AI assistant</div></div></div>
+      <p>AI chief of staff for Gmail and Calendar. Drafts replies in your voice, chases follow-ups, books meetings and briefs you each morning. Every send is approval-gated. Browser agent, job search and travel tools built in.</p>
+      <div class="stack"><span class="chip">Go · Fiber</span><span class="chip">TypeScript</span><span class="chip">Gemini · Claude</span><span class="chip">Playwright</span><span class="chip">Google OAuth</span></div>
+    </a>
+    <a class="card reveal" href="https://thevibesecurity.com" target="_blank" rel="noopener">
+      <span class="go">thevibesecurity.com ↗</span>
+      <div class="top"><img src="https://www.google.com/s2/favicons?domain=thevibesecurity.com&sz=64" alt=""><div><h3>TheVibeSecurity</h3><div class="role">Founder · security</div></div></div>
+      <p>Free vulnerability scanner for apps built with Lovable, Bolt and Cursor: exposed keys, open databases, risky settings, with clear fixes and one-click fix PRs. INR and USD billing, admin panel, scan jobs on Cloud Run.</p>
+      <div class="stack"><span class="chip">Go</span><span class="chip">Next.js</span><span class="chip">Cloudflare Workers</span><span class="chip">GCP Cloud Run</span><span class="chip">Razorpay · Dodo</span></div>
+    </a>
+    <a class="card reveal" href="https://rahi.club" target="_blank" rel="noopener">
+      <span class="go">rahi.club ↗</span>
+      <div class="top"><img src="https://www.google.com/s2/favicons?domain=rahi.club&sz=64" alt=""><div><h3>Rahi</h3><div class="role">Founder · travel B2B2C</div></div></div>
+      <p>Group-trip software for Indian tour operators. One dashboard for itinerary, rooming, headcount, payments and SOS, plus an app for every traveller and trip captain.</p>
+      <div class="stack"><span class="chip">Go</span><span class="chip">Expo</span><span class="chip">React · Vite</span><span class="chip">WebSocket</span><span class="chip">Cloudflare</span></div>
+    </a>
+  </div>
+</div></section>
+
+<section id="log" style="background:var(--paper-2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)"><div class="wrap">
+  <div class="sec-head">
+    <span class="mono">Ship log · 2020 → 2026</span>
+    <div><h2>Every product, in the order it shipped.</h2><p>Blue ring: I founded or co-founded it. Green: still live. Grey: done, shut down, or handed over. Pulled from 19 GitHub organisations and 105 public repos.</p></div>
   </div>
 
+  <div class="log" id="loglist">
+    <div class="year"><div class="y">2026</div><div></div></div>
+    <div class="entry founder live reveal"><div class="node"></div><div class="body"><h4><a href="https://www.medyzen.in" target="_blank" rel="noopener">Medyzen</a><span class="tag f">founder</span><span class="tag l">live</span></h4><div class="st">Go · Expo · React · AWS<br>23 repos</div><p>Managed hospital pharmacy platform, Clinic OS EMR, DoctorClub. Three apps, three panels, one backend.</p></div></div>
+    <div class="entry founder live reveal"><div class="node"></div><div class="body"><h4><a href="https://askmomo.app" target="_blank" rel="noopener">Momo AI</a><span class="tag f">founder</span><span class="tag l">live</span></h4><div class="st">Go · TypeScript · Gemini<br>askmomo.app</div><p>Personal AI assistant for Gmail and Calendar with an approval gate on every action.</p></div></div>
+    <div class="entry founder live reveal"><div class="node"></div><div class="body"><h4><a href="https://thevibesecurity.com" target="_blank" rel="noopener">TheVibeSecurity</a><span class="tag f">founder</span><span class="tag l">live</span></h4><div class="st">Go · Next.js · Cloudflare<br>thevibesecurity.com</div><p>Security scanner for AI-built apps, with fix PRs and global billing.</p></div></div>
+    <div class="entry founder live reveal"><div class="node"></div><div class="body"><h4><a href="https://rahi.club" target="_blank" rel="noopener">Rahi</a><span class="tag f">founder</span><span class="tag l">live</span></h4><div class="st">Go · Expo · React<br>rahi.club</div><p>Group-trip operations software for tour operators in India.</p></div></div>
+    <div class="entry live reveal"><div class="node"></div><div class="body"><h4><a href="https://viduralex.com" target="_blank" rel="noopener">Viduralex</a><span class="tag l">live</span></h4><div class="st">Next.js · Postgres · Workers<br>client</div><p>Law-firm website and CMS, Bar Council Rule 36 compliant, on Cloudflare Workers with Postgres on Azure.</p></div></div>
+    <div class="entry live reveal"><div class="node"></div><div class="body"><h4><a href="https://amrielle-website.vercel.app" target="_blank" rel="noopener">Amrielle</a><span class="tag l">live</span></h4><div class="st">TypeScript · Vercel<br>client</div><p>Site for a personal-branding agency serving founders and executives.</p></div></div>
+    <div class="entry reveal"><div class="node"></div><div class="body"><h4>Roomiefy</h4><div class="st">Go · React Native<br>3 repos</div><p>Roommate-matching app: Go backend plus a dedicated chat microservice.</p></div></div>
+    <div class="entry reveal"><div class="node"></div><div class="body"><h4>RankUp</h4><div class="st">NestJS · Go · React Router 7<br>5 repos</div><p>Rank-booster platform: SSR user site, admin panel, API; later split into standalone services.</p></div></div>
 
+    <div class="year"><div class="y">2025</div><div></div></div>
+    <div class="entry founder live reveal"><div class="node"></div><div class="body"><h4><a href="https://github.com/Hamsey-Org" target="_blank" rel="noopener">Hamsey</a><span class="tag f">co-founder · cto</span><span class="tag l">active</span></h4><div class="st">Go · Expo<br>10 repos</div><p>Mobile app on Go microservices: chat, video processing, workers, admin dashboards, open-source OTA server.</p></div></div>
+    <div class="entry reveal"><div class="node"></div><div class="body"><h4>Jeehub · reviseUPSC</h4><div class="st">Go · Kotlin · Expo<br>4 repos</div><p>Exam-prep apps for JEE and UPSC with a shared Go utility backend.</p></div></div>
+    <div class="entry reveal"><div class="node"></div><div class="body"><h4>SalesOutreach</h4><div class="st">Go<br>1 repo</div><p>Outbound sales automation backend.</p></div></div>
+    <div class="entry reveal"><div class="node"></div><div class="body"><h4>Dating apps</h4><div class="st">Go · Flutter · React Native<br>4 repos</div><p>Two dating products, proximity-based and curated, each with its own Go backend and chat service.</p></div></div>
 
+    <div class="year"><div class="y">2024</div><div></div></div>
+    <div class="entry founder reveal"><div class="node"></div><div class="body"><h4><a href="https://github.com/FindCreators" target="_blank" rel="noopener">FindCreators</a><span class="tag f">founder</span></h4><div class="st">Go · React · React Native<br>9 repos</div><p>Creator-discovery marketplace: website, app, Go backend, Instagram connect, contact pipeline.</p></div></div>
+    <div class="entry reveal"><div class="node"></div><div class="body"><h4><a href="https://github.com/travel-planner-portal" target="_blank" rel="noopener">Travel Planner</a></h4><div class="st">Next.js · Node<br>4 repos</div><p>Trip-planning portal with blog backend, later reborn as TravelGo.</p></div></div>
+    <div class="entry reveal"><div class="node"></div><div class="body"><h4>PlaceCom · Campuswise</h4><div class="st">Node · React<br>3 repos</div><p>Campus placement portal for colleges and recruiters.</p></div></div>
+    <div class="entry reveal"><div class="node"></div><div class="body"><h4>Catchup</h4><div class="st">React<br>2 repos</div><p>Flight-booking and product website.</p></div></div>
 
+    <div class="year"><div class="y">2023</div><div></div></div>
+    <div class="entry founder live reveal"><div class="node"></div><div class="body"><h4><a href="https://www.rbulance.com" target="_blank" rel="noopener">Rbulance</a><span class="tag f">founder</span><span class="tag l">live</span></h4><div class="st">Node · React · TypeScript<br>5 repos</div><p>India's first accident-detection and emergency-dispatch family safety app, with a hospital-side console.</p></div></div>
+    <div class="entry founder reveal"><div class="node"></div><div class="body"><h4><a href="https://www.rollovermoney.in" target="_blank" rel="noopener">Rollover Money</a><span class="tag f">founder</span></h4><div class="st">Node · React<br>7 repos</div><p>Cashflow financing for small businesses: loan dashboard, lender backend, public site.</p></div></div>
+    <div class="entry reveal"><div class="node"></div><div class="body"><h4>NFT marketplace · Twitter bots</h4><div class="st">Solidity · Python</div><p>Create Protocol marketplace work and automation bots.</p></div></div>
+
+    <div class="year"><div class="y">2022</div><div></div></div>
+    <div class="entry reveal"><div class="node"></div><div class="body"><h4>Create Protocol</h4><div class="st">React · Web3<br>Oct 2021 – May 2022</div><p>Full-stack developer. Built the Mercado Studio NFT marketplace frontend and API integration.</p></div></div>
+    <div class="entry reveal"><div class="node"></div><div class="body"><h4>Toodum</h4><div class="st">Node · React<br>2 repos</div><p>Marketplace frontend and backend.</p></div></div>
+    <div class="entry reveal"><div class="node"></div><div class="body"><h4><a href="https://flipkart-grid-4.vercel.app" target="_blank" rel="noopener">Flipkart Grid 4 · HackOn with Amazon</a></h4><div class="st">React · Node</div><p>Hackathon builds for two national engineering challenges.</p></div></div>
+
+    <div class="year"><div class="y">2021</div><div></div></div>
+    <div class="entry reveal"><div class="node"></div><div class="body"><h4>Relato Technology</h4><div class="st">Node · Flutter<br>Mar – Oct 2021</div><p>Full-stack developer. REST APIs, Postman docs, and the Rsocial social-media Android app.</p></div></div>
+    <div class="entry reveal"><div class="node"></div><div class="body"><h4>Apni Dukan · Notes · Storybook</h4><div class="st">MERN</div><p>First MERN apps: local-store ordering, notes, and a storytelling site.</p></div></div>
+
+    <div class="year"><div class="y">2020</div><div></div></div>
+    <div class="entry reveal"><div class="node"></div><div class="body"><h4>Think India MNIT · Veerabhoomi</h4><div class="st">HTML · Flutter · Python</div><p>Campus-society sites, a Flutter chat app, a Covid detector, a quiz app, and the first commit on GitHub.</p></div></div>
+    <div class="entry reveal"><div class="node"></div><div class="body"><h4>JPMorgan Chase virtual internship</h4><div class="st">Python · React</div><p>Software engineering programme tasks, submitted as patches.</p></div></div>
+  </div>
+</div></section>
+
+<section id="stack"><div class="wrap">
+  <div class="sec-head">
+    <span class="mono">Stack</span>
+    <div><h2>What I reach for, and how long I have used it.</h2><p>Default stack today is Go + Postgres behind React and Expo, deployed with Terraform. Everything else is on the shelf when the problem asks for it.</p></div>
+  </div>
+  <div class="stack-grid">
+    <div class="stack-col"><h3>Backend</h3><ul><li>Go <small>2024 →</small></li><li>Node · Express · NestJS <small>2020 →</small></li><li>Python · Django · Flask <small>2020 →</small></li><li>PostgreSQL · GORM · pgx <small>2024 →</small></li><li>MongoDB · Redis <small>2020 →</small></li><li>WebSockets · microservices</li></ul></div>
+    <div class="stack-col"><h3>Mobile</h3><ul><li>React Native · Expo <small>2021 →</small></li><li>Kotlin · Android <small>2020 →</small></li><li>Flutter · Dart <small>2020 →</small></li><li>OTA updates · Play release</li></ul></div>
+    <div class="stack-col"><h3>Web</h3><ul><li>React · TypeScript <small>2020 →</small></li><li>Next.js · React Router SSR</li><li>Ant Design · Tailwind</li><li>PWA · offline-first</li><li>SEO · AEO · GEO</li></ul></div>
+    <div class="stack-col"><h3>Infra &amp; AI</h3><ul><li>AWS · ECS · RDS · Terraform</li><li>Azure Container Apps · GCP Cloud Run</li><li>Cloudflare Workers · R2</li><li>GitHub Actions · OIDC · self-hosted runners</li><li>Claude · Gemini · agent tooling</li><li>Razorpay · Dodo Payments</li></ul></div>
+  </div>
+</div></section>
+
+<section id="code" style="background:var(--paper-2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)"><div class="wrap">
+  <div class="sec-head">
+    <span class="mono">Code</span>
+    <div><h2>Public work on GitHub.</h2><p>Most product code lives in private organisation repos. These numbers come straight from the GitHub API when the page loads.</p></div>
+  </div>
+  <div class="gh">
+    <div>
+      <div class="stats">
+        <div class="stat"><b id="s-repos">105</b><span>public repos</span></div>
+        <div class="stat"><b>19</b><span>organisations</span></div>
+        <div class="stat"><b id="s-followers">20</b><span>followers</span></div>
+      </div>
+      <p style="margin-top:16px;color:var(--ink-2);font-size:15px">On GitHub since <span id="s-since">April 2020</span>. <a href="https://github.com/shaurya127" target="_blank" rel="noopener" style="color:var(--accent)">github.com/shaurya127 ↗</a></p>
+    </div>
+    <div class="repos">
+      <a class="repo" href="https://github.com/Hamsey-Org/Hamsey-OTA" target="_blank" rel="noopener">Hamsey-OTA · CodePush-compatible OTA server for React Native<span>Go</span></a>
+      <a class="repo" href="https://github.com/FindCreators/insta-connect" target="_blank" rel="noopener">insta-connect · Instagram account linking service<span>JavaScript</span></a>
+      <a class="repo" href="https://github.com/travel-planner-portal/travel-planner-nextjs" target="_blank" rel="noopener">travel-planner-nextjs · trip planner web app<span>Next.js</span></a>
+      <a class="repo" href="https://github.com/shaurya127/expo-starter-project" target="_blank" rel="noopener">expo-starter-project · production Expo template<span>TypeScript</span></a>
+      <a class="repo" href="https://github.com/shaurya127/inventory-scanner-app" target="_blank" rel="noopener">inventory-scanner-app · barcode inventory for small stores<span>JavaScript</span></a>
+      <a class="repo" href="https://github.com/shaurya127/python-twitter-bot" target="_blank" rel="noopener">python-twitter-bot · scheduled posting bot<span>Python</span></a>
+    </div>
+  </div>
+</div></section>
+
+<section id="path"><div class="wrap">
+  <div class="sec-head">
+    <span class="mono">Path</span>
+    <div><h2>How I got here.</h2></div>
+  </div>
+  <div class="path">
+    <div><b>MNIT Jaipur</b><span>2019 – 2023</span><p>B.Tech (Hons.) Electrical Engineering, National Institute of Technology. Spent the degree shipping apps for campus societies and competitive programming in C++.</p></div>
+    <div><b>Relato Technology</b><span>2021</span><p>First job, remote. REST APIs and the Rsocial Android app.</p></div>
+    <div><b>Create Protocol</b><span>2021 – 2022</span><p>Web3 frontend and the Mercado Studio NFT marketplace.</p></div>
+    <div><b>Founder, repeatedly</b><span>2023 →</span><p>Rollover Money, Rbulance, FindCreators, Hamsey, Medyzen, TheVibeSecurity, Momo AI, Rahi. Each one built from the first commit.</p></div>
+  </div>
+</div></section>
+
+<section class="contact" id="contact"><div class="wrap">
+  <span class="mono" style="color:color-mix(in srgb,var(--paper) 60%,transparent)">Contact</span>
+  <h2 style="margin-top:12px">Building something that needs a whole stack and one person who owns it?</h2>
+  <div class="links">
+    <a class="primary" href="mailto:shaurya1272000@gmail.com">shaurya1272000@gmail.com</a>
+    <a href="https://www.linkedin.com/in/shaurya-pratap-singh-5263981b1/" target="_blank" rel="noopener">LinkedIn</a>
+    <a href="https://github.com/shaurya127" target="_blank" rel="noopener">GitHub</a>
+    <a href="https://x.com/SHAURYA127" target="_blank" rel="noopener">X</a>
+  </div>
+</div></section>
+
+<div class="wrap"><footer><span>© 2026 Shaurya Pratap Singh</span><span class="mono">Jaipur · IST</span></footer></div>
+
+<script>
+(function(){
+  var root=document.documentElement,btn=document.getElementById('theme');
+  function cur(){var t=root.getAttribute('data-theme');if(t)return t;return matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light'}
+  function paint(){btn.textContent=cur()==='dark'?'Light':'Dark'}
+  try{var s=localStorage.getItem('theme');if(s)root.setAttribute('data-theme',s)}catch(e){}
+  paint();
+  btn.addEventListener('click',function(){var n=cur()==='dark'?'light':'dark';root.setAttribute('data-theme',n);try{localStorage.setItem('theme',n)}catch(e){}paint()});
+
+  var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{rootMargin:'0px 0px -8% 0px'});
+  document.querySelectorAll('.reveal').forEach(function(el){io.observe(el)});
+  setTimeout(function(){document.querySelectorAll('.reveal:not(.in)').forEach(function(el){el.classList.add('in')})},1800);
+
+  fetch('https://api.github.com/users/shaurya127').then(function(r){return r.ok?r.json():null}).then(function(u){
+    if(!u)return;
+    document.getElementById('s-repos').textContent=u.public_repos;
+    document.getElementById('s-followers').textContent=u.followers;
+    var d=new Date(u.created_at);document.getElementById('s-since').textContent=d.toLocaleDateString('en-GB',{month:'long',year:'numeric'});
+  }).catch(function(){});
+})();
+</script>
 </body>
-
-
-
-
-
 </html>
