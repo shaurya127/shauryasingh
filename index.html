@@ -214,6 +214,30 @@ h2 em{font-style:normal;color:var(--violet-2)}
 .btn:not(.p):hover{border-color:var(--text)}
 .foot{position:relative;margin-top:90px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;border-top:1px solid var(--line);padding-top:22px}
 
+.consist{padding:0 var(--gutter) 40px}
+.cbox{border:1px solid var(--line);border-radius:20px;background:var(--panel);padding:clamp(20px,2.6vw,34px);display:grid;grid-template-columns:1fr auto;gap:28px;align-items:start}
+@media(max-width:900px){.cbox{grid-template-columns:1fr}}
+.cbox .h{display:flex;flex-wrap:wrap;align-items:baseline;gap:8px 16px;margin-bottom:18px}
+.cbox .h b{font-family:var(--display);font-weight:700;font-size:clamp(26px,3vw,42px);letter-spacing:-.03em;line-height:1}
+.cbox .h span{font-family:var(--mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--text-3)}
+.heat{width:100%;overflow-x:auto;scrollbar-width:none}
+.heat::-webkit-scrollbar{display:none}
+.heat svg{display:block;min-width:720px;width:100%;height:auto}
+.heat rect{rx:2;ry:2}
+.heat text{font-family:var(--mono);font-size:9px;fill:var(--text-3)}
+.years{display:grid;grid-template-columns:repeat(7,1fr);gap:10px;margin-top:22px}
+.years div{font-family:var(--mono);font-size:11px;color:var(--text-3);letter-spacing:.04em}
+.years i{display:block;height:5px;border-radius:3px;background:var(--line-2);margin:8px 0 6px;overflow:hidden;position:relative}
+.years i::after{content:"";position:absolute;left:0;top:0;bottom:0;width:var(--w,0);background:var(--violet);border-radius:3px;transition:width 1.2s cubic-bezier(.2,.7,.2,1)}
+.years b{display:block;color:var(--text);font-weight:600;font-size:13px}
+.cstats{display:grid;grid-template-columns:1fr 1fr;gap:12px;min-width:240px}
+@media(max-width:900px){.cstats{grid-template-columns:repeat(2,1fr);min-width:0}.years{grid-template-columns:repeat(4,1fr)}}
+.cstat{padding:16px;border:1px solid var(--line);border-radius:14px}
+.cstat b{display:block;font-family:var(--display);font-weight:700;font-size:28px;letter-spacing:-.03em;line-height:1}
+.cstat span{display:block;margin-top:6px;font-family:var(--mono);font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--text-3)}
+.cbox .leg{display:flex;align-items:center;gap:5px;font-family:var(--mono);font-size:10px;color:var(--text-3);margin-top:12px;justify-content:flex-end}
+.cbox .leg i{width:10px;height:10px;border-radius:2px;display:inline-block}
+
 .rv{opacity:0;transform:translateY(24px)}
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.rv{opacity:1;transform:none}.hero h1 .ln span{transform:none}.loader{display:none}.scard{position:relative;top:0}}
 </style>
@@ -367,7 +391,23 @@ h2 em{font-style:normal;color:var(--violet-2)}
 </section>
 
 <section class="code" id="code">
-  <div class="sec-head"><h2 class="rv">Public <em>code</em></h2><p class="rv">Most product code lives in private organisation repos. These numbers come straight from the GitHub API when the page loads.</p></div>
+  <div class="sec-head"><h2 class="rv">Public <em>code</em></h2><p class="rv">Most product code lives in private organisation repos. The graph and numbers below are pulled live from GitHub when the page loads: one square per day, six years of showing up.</p></div>
+  <div class="consist rv">
+    <div class="cbox" id="cbox">
+      <div>
+        <div class="h"><b id="c-total">7,076</b><span>contributions in the last year</span></div>
+        <div class="heat" id="heat"><img src="https://ghchart.rshah.org/7C5CFF/shaurya127" alt="GitHub contribution graph" style="width:100%;opacity:.9"></div>
+        <div class="leg">Less <i style="background:#1A1E2E"></i><i style="background:#3B2F7A"></i><i style="background:#5A45C4"></i><i style="background:#7C5CFF"></i><i style="background:#B9A9FF"></i> More</div>
+        <div class="years" id="years"></div>
+      </div>
+      <div class="cstats">
+        <div class="cstat"><b id="c-all">9,700+</b><span>all time</span></div>
+        <div class="cstat"><b id="c-days">—</b><span>active days / 365</span></div>
+        <div class="cstat"><b id="c-streak">—</b><span>longest streak</span></div>
+        <div class="cstat"><b id="c-best">—</b><span>best day</span></div>
+      </div>
+    </div>
+  </div>
   <div class="code-grid">
     <div class="gh-left">
       <div class="stats"><div><b id="s-repos">105</b><span>public repos</span></div><div><b>19</b><span>organisations</span></div><div><b id="s-followers">20</b><span>followers</span></div></div>
@@ -473,6 +513,43 @@ h2 em{font-style:normal;color:var(--violet-2)}
     }});
   }
 
+  fetch('https://api.github.com/users/shaurya127').then(function(r){return r.ok?r.json():null}).then(function(u){if(!u)return;
+    document.getElementById('s-repos').textContent=u.public_repos;document.getElementById('n-repos').setAttribute('data-count',u.public_repos);
+    document.getElementById('s-followers').textContent=u.followers;
+    document.getElementById('s-since').textContent=new Date(u.created_at).toLocaleDateString('en-GB',{month:'long',year:'numeric'})}).catch(function(){});
+
+  (function(){
+    var api='https://github-contributions-api.jogruber.de/v4/shaurya127';
+    var cols=['#1A1E2E','#3B2F7A','#5A45C4','#7C5CFF','#B9A9FF'];
+    function fmt(n){return n.toLocaleString('en-IN')}
+    fetch(api+'?y=last').then(function(r){return r.ok?r.json():null}).then(function(d){
+      if(!d||!d.contributions)return;
+      var days=d.contributions,total=d.total&&d.total.lastYear||days.reduce(function(a,x){return a+x.count},0);
+      document.getElementById('c-total').textContent=fmt(total);
+      var first=new Date(days[0].date),pad=first.getDay();
+      var cell=12,gap=3,left=0,top=16,w=Math.ceil((days.length+pad)/7)*(cell+gap)+left,h=7*(cell+gap)+top;
+      var svg='<svg viewBox="0 0 '+w+' '+h+'" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Contribution heatmap">';
+      var lastM=-1,active=0,streak=0,best=0,bestD=null,cur=0;
+      days.forEach(function(x,i){var idx=i+pad,c=Math.floor(idx/7),r=idx%7,dt=new Date(x.date);
+        if(dt.getMonth()!==lastM&&r===0||i===0){if(dt.getMonth()!==lastM){lastM=dt.getMonth();svg+='<text x="'+(left+c*(cell+gap))+'" y="10">'+dt.toLocaleString('en',{month:'short'})+'</text>'}}
+        svg+='<rect x="'+(left+c*(cell+gap))+'" y="'+(top+r*(cell+gap))+'" width="'+cell+'" height="'+cell+'" fill="'+cols[Math.min(x.level,4)]+'"><title>'+x.date+': '+x.count+'</title></rect>';
+        if(x.count>0){active++;cur++;if(cur>streak)streak=cur}else cur=0;
+        if(x.count>best){best=x.count;bestD=x.date}
+      });
+      svg+='</svg>';
+      document.getElementById('heat').innerHTML=svg;
+      document.getElementById('c-days').textContent=active;
+      document.getElementById('c-streak').textContent=streak+'d';
+      document.getElementById('c-best').textContent=best;
+    }).catch(function(){});
+    fetch(api+'?y=all').then(function(r){return r.ok?r.json():null}).then(function(d){
+      if(!d||!d.total)return;var t=d.total,ys=Object.keys(t).sort(),max=Math.max.apply(null,ys.map(function(y){return t[y]})),sum=0,html='';
+      ys.forEach(function(y){sum+=t[y];html+='<div>'+y+'<i style="--w:'+Math.round(t[y]/max*100)+'%"></i><b>'+fmt(t[y])+'</b></div>'});
+      document.getElementById('years').innerHTML=html;document.getElementById('c-all').textContent=fmt(sum);
+      if(typeof ScrollTrigger!=='undefined')ScrollTrigger.refresh();
+    }).catch(function(){});
+  })();
+
   if(!hasGsap||rm)return;
 
   gsap.utils.toArray('section .rv').forEach(function(el){gsap.to(el,{opacity:1,y:0,duration:.9,ease:'power3.out',scrollTrigger:{trigger:el,start:'top 88%'}})});
@@ -497,10 +574,8 @@ h2 em{font-style:normal;color:var(--violet-2)}
 
   if(fine){document.querySelectorAll('.mag').forEach(function(b){b.addEventListener('mousemove',function(e){var r=b.getBoundingClientRect();gsap.to(b,{x:(e.clientX-r.left-r.width/2)*.25,y:(e.clientY-r.top-r.height/2)*.35,duration:.4,ease:'power3.out'})});b.addEventListener('mouseleave',function(){gsap.to(b,{x:0,y:0,duration:.6,ease:'elastic.out(1,.4)'})})})}
 
-  fetch('https://api.github.com/users/shaurya127').then(function(r){return r.ok?r.json():null}).then(function(u){if(!u)return;
-    document.getElementById('s-repos').textContent=u.public_repos;document.getElementById('n-repos').setAttribute('data-count',u.public_repos);
-    document.getElementById('s-followers').textContent=u.followers;
-    document.getElementById('s-since').textContent=new Date(u.created_at).toLocaleDateString('en-GB',{month:'long',year:'numeric'})}).catch(function(){});
+
+
 
   addEventListener('load',function(){ScrollTrigger.refresh()});
 })();
