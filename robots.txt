@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://shaurya127.github.io/shauryasingh/sitemap.xml
