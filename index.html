@@ -53,9 +53,9 @@ body.hov .cur-ring{width:64px;height:64px;opacity:1;margin:-14px 0 0 -14px}
 .nav .time{font-family:var(--mono);font-size:12px;letter-spacing:.08em}
 @media(max-width:760px){.nav ul{display:none}}
 
-.hero{position:relative;min-height:100svh;display:grid;grid-template-rows:1fr auto;grid-template-columns:minmax(0,1fr);overflow:hidden;max-width:100vw}
+.hero{position:relative;min-height:100svh;display:grid;grid-template-rows:1fr auto;align-items:center;grid-template-columns:minmax(0,1fr);overflow:hidden;max-width:100vw}
 #net{position:absolute;inset:0;width:100%;height:100%}
-.hero-in{position:relative;z-index:2;min-width:0;padding:calc(var(--gutter) + 60px) var(--gutter) 0;display:grid;grid-template-columns:1fr auto;gap:40px;align-items:end}
+.hero-in{position:relative;z-index:2;min-width:0;padding:calc(var(--gutter) + 50px) var(--gutter) 0;display:grid;grid-template-columns:1fr auto;gap:40px;align-items:center;align-self:center}
 @media(max-width:900px){.hero-in{grid-template-columns:1fr}.hero h1{font-size:9vw;max-width:none}}
 .hero h1{font-family:var(--display);font-weight:800;font-size:clamp(36px,5.4vw,84px);line-height:1.02;letter-spacing:-.035em;max-width:17ch}
 .hero h1 .ln{display:block;overflow:hidden;padding-bottom:.06em}
@@ -71,7 +71,7 @@ body.hov .cur-ring{width:64px;height:64px;opacity:1;margin:-14px 0 0 -14px}
 .portrait::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 55%,rgba(7,8,14,.85))}
 .portrait .cap{position:absolute;left:14px;bottom:12px;z-index:2;font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--text-2)}
 .portrait .cap b{display:block;color:var(--text);font-weight:500}
-.hero-foot{position:relative;z-index:2;min-width:0;overflow:hidden;border-top:1px solid var(--line);margin-top:48px}
+.hero-foot{position:relative;z-index:2;min-width:0;overflow:hidden;border-top:1px solid var(--line);margin-top:40px;align-self:end}
 .marquee{overflow:hidden;white-space:nowrap;padding:16px 0}
 .marquee .track{display:inline-flex;animation:mq 40s linear infinite}
 .marquee span{font-family:var(--display);font-weight:600;font-size:clamp(14px,1.2vw,17px);letter-spacing:-.01em;padding:0 28px;color:var(--text-2)}
@@ -87,8 +87,8 @@ body.hov .cur-ring{width:64px;height:64px;opacity:1;margin:-14px 0 0 -14px}
 .num b i{font-style:normal;color:var(--violet)}
 .num span{display:block;margin-top:10px;font-family:var(--mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--text-3)}
 
-.live{padding:clamp(70px,10vw,140px) 0 0}
-.sec-head{padding:0 var(--gutter);display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:end;margin-bottom:46px}
+.live{padding:clamp(56px,7vw,96px) 0 0}
+.sec-head{padding:0 var(--gutter);display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:end;margin-bottom:36px}
 @media(max-width:900px){.sec-head{grid-template-columns:1fr;gap:16px}}
 h2{font-family:var(--display);font-weight:700;font-size:clamp(30px,3.8vw,58px);line-height:1.04;letter-spacing:-.03em}
 h2 em{font-style:normal;color:var(--violet-2)}
@@ -108,7 +108,7 @@ h2 em{font-style:normal;color:var(--violet-2)}
 .lt .st i{width:6px;height:6px;border-radius:50%;background:var(--mint);animation:ping 2s infinite}
 @keyframes ping{0%{box-shadow:0 0 0 0 rgba(61,240,160,.6)}100%{box-shadow:0 0 0 10px transparent}}
 
-.now{padding:clamp(90px,12vw,170px) 0 0}
+.now{padding:clamp(64px,8vw,110px) 0 0}
 .stack-wrap{padding:0 var(--gutter)}
 .scard{position:sticky;top:90px;margin-bottom:28px;border:1px solid var(--line-2);border-radius:24px;background:var(--panel);padding:clamp(26px,3.5vw,54px);display:grid;grid-template-columns:1.1fr 1fr;gap:40px;min-height:420px;box-shadow:0 -20px 60px rgba(0,0,0,.5);transform-origin:top center;overflow:hidden}
 @media(max-width:900px){.scard{grid-template-columns:1fr;position:relative;top:0}}
@@ -125,15 +125,15 @@ h2 em{font-style:normal;color:var(--violet-2)}
 .scard .modules span{font-size:13px;color:var(--text-3)}
 .scard .link{align-self:flex-end;font-family:var(--mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;padding:14px 20px;border:1px solid var(--line-2);border-radius:999px;transition:background .3s,color .3s,border-color .3s}
 .scard .link:hover{background:var(--text);color:var(--bg);border-color:var(--text)}
-.scard.c1{background:linear-gradient(135deg,#17123A,#0F1220 60%)}
-.scard.c2{background:linear-gradient(135deg,#0F1F1B,#0F1220 60%)}
-.scard.c3{background:linear-gradient(135deg,#1F1612,#0F1220 60%)}
-.scard.c4{background:linear-gradient(135deg,#101A2A,#0F1220 60%)}
-.scard.c5{background:linear-gradient(135deg,#1E1226,#0F1220 60%)}
-.scard.c6{background:linear-gradient(135deg,#0F1E26,#0F1220 60%)}
+.scard.c1{background:linear-gradient(135deg,#1E1226,#0F1220 60%)}
+.scard.c2{background:linear-gradient(135deg,#0F1E26,#0F1220 60%)}
+.scard.c3{background:linear-gradient(135deg,#17123A,#0F1220 60%)}
+.scard.c4{background:linear-gradient(135deg,#0F1F1B,#0F1220 60%)}
+.scard.c5{background:linear-gradient(135deg,#1F1612,#0F1220 60%)}
+.scard.c6{background:linear-gradient(135deg,#101A2A,#0F1220 60%)}
 .scard .big{font-family:var(--display);font-weight:800;font-size:clamp(90px,13vw,200px);line-height:.8;letter-spacing:-.06em;color:transparent;-webkit-text-stroke:1px rgba(255,255,255,.14);position:absolute;right:30px;bottom:-10px;pointer-events:none;user-select:none}
 
-.log{padding:clamp(90px,12vw,170px) 0 0}
+.log{padding:clamp(64px,8vw,110px) 0 0}
 .hpin{position:relative;height:100svh;overflow:hidden}
 .htrack{position:absolute;top:0;left:0;height:100%;display:flex;align-items:center;will-change:transform;padding-left:var(--gutter)}
 .yearblk{flex:none;display:flex;align-items:center;height:100%}
@@ -162,7 +162,7 @@ h2 em{font-style:normal;color:var(--violet-2)}
   .hline,.hprog,.hhint{display:none}
 }
 
-.stack{padding:clamp(90px,12vw,170px) 0 0}
+.stack{padding:clamp(64px,8vw,110px) 0 0}
 .stack-grid{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--line)}
 @media(max-width:1000px){.stack-grid{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:560px){.stack-grid{grid-template-columns:1fr}}
@@ -174,7 +174,7 @@ h2 em{font-style:normal;color:var(--violet-2)}
 .scol li small{font-family:var(--mono);font-size:11px;color:var(--text-3)}
 .scol li.hero-li{font-family:var(--display);font-weight:700;font-size:26px;letter-spacing:-.02em;line-height:1;margin-bottom:6px}
 
-.code{padding:clamp(90px,12vw,170px) 0 0}
+.code{padding:clamp(64px,8vw,110px) 0 0}
 .code-grid{display:grid;grid-template-columns:1fr 1fr;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
 @media(max-width:900px){.code-grid{grid-template-columns:1fr}}
 .gh-left{padding:40px var(--gutter);border-right:1px solid var(--line)}
@@ -192,7 +192,7 @@ h2 em{font-style:normal;color:var(--violet-2)}
 .repo small{display:block;color:var(--text-3);font-size:13.5px;margin-top:2px}
 .repo span{font-family:var(--mono);font-size:11px;letter-spacing:.06em;color:var(--violet-2)}
 
-.path{padding:clamp(90px,12vw,170px) 0 0}
+.path{padding:clamp(64px,8vw,110px) 0 0}
 .path-grid{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
 @media(max-width:900px){.path-grid{grid-template-columns:1fr 1fr}}
 @media(max-width:560px){.path-grid{grid-template-columns:1fr}}
@@ -238,7 +238,7 @@ h2 em{font-style:normal;color:var(--violet-2)}
       </h1>
       <p class="sub rv">Go on the backend, React and Expo on every screen, the cloud from Terraform up. Fifteen products taken from a blank repo to real users, most of them as the founding engineer.</p>
       <div class="tags rv">
-        <span><b>●</b> Medyzen</span><span><b>●</b> Momo AI</span><span><b>●</b> TheVibeSecurity</span><span><b>●</b> Rahi</span><span><b>●</b> Hamsey</span><span><b>●</b> Farishta FM</span><span>Rbulance</span>
+        <span><b>●</b> Hamsey</span><span><b>●</b> Farishta FM</span><span><b>●</b> Medyzen</span><span><b>●</b> Momo AI</span><span><b>●</b> TheVibeSecurity</span><span><b>●</b> Rahi</span><span>Rbulance</span>
       </div>
     </div>
     <div class="portrait rv"><img src="assets/img/shaurya.png" alt="Shaurya Pratap Singh" width="400" height="400"><div class="cap"><b>Shaurya Pratap Singh</b>MNIT Jaipur · EE '23</div></div>
@@ -258,13 +258,13 @@ h2 em{font-style:normal;color:var(--violet-2)}
 <section class="live" id="live">
   <div class="sec-head"><h2 class="rv">Live <em>right now</em></h2><p class="rv">Eight products serving real users today. Favicons load from the real domains. Click any of them.</p></div>
   <div class="live-grid">
+    <a class="lt" href="https://hamsey.co" target="_blank" rel="noopener"><img src="https://www.google.com/s2/favicons?domain=hamsey.co&sz=64" alt=""><span class="st"><i></i>LIVE</span><b>Hamsey</b><small>hamsey.co · meet people nearby</small></a>
+    <a class="lt" href="https://farishtafm.com" target="_blank" rel="noopener"><img src="https://www.google.com/s2/favicons?domain=farishtafm.com&sz=64" alt=""><span class="st"><i></i>LIVE</span><b>Farishta FM</b><small>farishtafm.com · Islamic audio</small></a>
     <a class="lt" href="https://www.medyzen.in" target="_blank" rel="noopener"><img src="https://www.google.com/s2/favicons?domain=medyzen.in&sz=64" alt=""><span class="st"><i></i>LIVE</span><b>Medyzen</b><small>medyzen.in · hospital pharmacy</small></a>
     <a class="lt" href="https://askmomo.app" target="_blank" rel="noopener"><img src="https://www.google.com/s2/favicons?domain=askmomo.app&sz=64" alt=""><span class="st"><i></i>LIVE</span><b>Momo AI</b><small>askmomo.app · AI chief of staff</small></a>
     <a class="lt" href="https://thevibesecurity.com" target="_blank" rel="noopener"><img src="https://www.google.com/s2/favicons?domain=thevibesecurity.com&sz=64" alt=""><span class="st"><i></i>LIVE</span><b>TheVibeSecurity</b><small>thevibesecurity.com · scanner</small></a>
     <a class="lt" href="https://rahi.club" target="_blank" rel="noopener"><img src="https://www.google.com/s2/favicons?domain=rahi.club&sz=64" alt=""><span class="st"><i></i>LIVE</span><b>Rahi</b><small>rahi.club · group-trip ops</small></a>
     <a class="lt" href="https://clinic.medyzen.in" target="_blank" rel="noopener"><img src="https://www.google.com/s2/favicons?domain=medyzen.in&sz=64" alt=""><span class="st"><i></i>LIVE</span><b>Clinic OS</b><small>clinic.medyzen.in · EMR</small></a>
-    <a class="lt" href="https://hamsey.co" target="_blank" rel="noopener"><img src="https://www.google.com/s2/favicons?domain=hamsey.co&sz=64" alt=""><span class="st"><i></i>LIVE</span><b>Hamsey</b><small>hamsey.co · meet people nearby</small></a>
-    <a class="lt" href="https://farishtafm.com" target="_blank" rel="noopener"><img src="https://www.google.com/s2/favicons?domain=farishtafm.com&sz=64" alt=""><span class="st"><i></i>LIVE</span><b>Farishta FM</b><small>farishtafm.com · Islamic audio</small></a>
     <a class="lt" href="https://www.rbulance.com" target="_blank" rel="noopener"><img src="https://www.google.com/s2/favicons?domain=rbulance.com&sz=64" alt=""><span class="st"><i></i>LIVE</span><b>Rbulance</b><small>rbulance.com · accident SOS</small></a>
   </div>
 </section>
@@ -273,34 +273,34 @@ h2 em{font-style:normal;color:var(--violet-2)}
   <div class="sec-head"><h2 class="rv">Six companies,<br><em>one engineer</em></h2><p class="rv">Each runs on code written end to end by me: schema, API, apps, infra, CI, and the on-call that follows. Scroll, they stack.</p></div>
   <div class="stack-wrap">
     <article class="scard c1">
-      <div><div class="k"><i>01</i> Founder &amp; CTO · Healthcare</div><h3>Medyzen</h3><p>Zero-investment managed pharmacy inside hospitals. A patient app, in-hospital kiosk, rider app and three operator panels on one Go backend, with live Razorpay payments, prescription processing and DPDP-grade patient data handling.</p><div class="chips"><span class="chip">Go</span><span class="chip">Postgres</span><span class="chip">Expo</span><span class="chip">React · AntD</span><span class="chip">AWS · Terraform</span></div></div>
-      <div class="r"><div class="modules"><div><b>Pharmacy platform</b><span>3 apps, 3 panels, 23 repos</span></div><div><b>Clinic OS</b><span>EMR with row-level tenancy, offline PWA</span></div><div><b>DoctorClub</b><span>Private network for licensed doctors</span></div><div><b>Internal platform</b><span>Test lab, cost engine, hiring ATS</span></div></div><a class="link" href="https://www.medyzen.in" target="_blank" rel="noopener">medyzen.in ↗</a></div>
-      <div class="big">MZ</div>
-    </article>
-    <article class="scard c2">
-      <div><div class="k"><i>02</i> Founder · AI</div><h3>Momo AI</h3><p>AI chief of staff for Gmail and Calendar. Drafts replies in your voice, chases follow-ups, books meetings and briefs you every morning. Every send is approval-gated. A browser agent, job search and travel tools are built in.</p><div class="chips"><span class="chip">Go · Fiber</span><span class="chip">TypeScript</span><span class="chip">Gemini · Claude</span><span class="chip">Playwright</span><span class="chip">Google OAuth</span></div></div>
-      <div class="r"><div class="modules"><div><b>Approval gate</b><span>Nothing leaves without a tap</span></div><div><b>Browser agent</b><span>Opens, acts, uploads, submits</span></div><div><b>Morning brief</b><span>Inbox + calendar, one card</span></div><div><b>Admin panel</b><span>admin.askmomo.app</span></div></div><a class="link" href="https://askmomo.app" target="_blank" rel="noopener">askmomo.app ↗</a></div>
-      <div class="big">MO</div>
-    </article>
-    <article class="scard c3">
-      <div><div class="k"><i>03</i> Founder · Security</div><h3>TheVibe<br>Security</h3><p>Free vulnerability scanner for apps built with Lovable, Bolt and Cursor. Finds exposed keys, open databases and risky settings, explains the fix, and can open the fix PR. INR and USD billing, global customers.</p><div class="chips"><span class="chip">Go</span><span class="chip">Next.js</span><span class="chip">Cloudflare Workers</span><span class="chip">Cloud Run</span><span class="chip">Razorpay · Dodo</span></div></div>
-      <div class="r"><div class="modules"><div><b>Scan jobs</b><span>Cloud Run, isolated per target</span></div><div><b>Fix PRs</b><span>GitHub App opens the patch</span></div><div><b>Billing</b><span>Razorpay INR, Dodo USD</span></div><div><b>Admin</b><span>Behind Cloudflare Access</span></div></div><a class="link" href="https://thevibesecurity.com" target="_blank" rel="noopener">thevibesecurity.com ↗</a></div>
-      <div class="big">VS</div>
-    </article>
-    <article class="scard c4">
-      <div><div class="k"><i>04</i> Founder · Travel B2B2C</div><h3>Rahi</h3><p>Group-trip software for Indian tour operators. One dashboard for itinerary, rooming, headcount, payments and SOS, plus an app for every traveller and trip captain, with live location and realtime channels.</p><div class="chips"><span class="chip">Go</span><span class="chip">Expo</span><span class="chip">React · Vite</span><span class="chip">WebSocket</span><span class="chip">Cloudflare</span></div></div>
-      <div class="r"><div class="modules"><div><b>Operator dashboard</b><span>Trips, rooming, headcount</span></div><div><b>Traveller app</b><span>Itinerary, SOS, payments</span></div><div><b>Realtime</b><span>WebSocket channels per trip</span></div><div><b>Multi-tenant</b><span>One API, many operators</span></div></div><a class="link" href="https://rahi.club" target="_blank" rel="noopener">rahi.club ↗</a></div>
-      <div class="big">RH</div>
-    </article>
-    <article class="scard c5">
-      <div><div class="k"><i>05</i> Co-founder &amp; CTO · Social</div><h3>Hamsey</h3><p>Proximity-based social networking app: meet people nearby, safely. Expo app on a fleet of Go services, with a dedicated chat microservice, a video processing pipeline, background workers, admin dashboards and an open-source CodePush-compatible OTA update server.</p><div class="chips"><span class="chip">Go</span><span class="chip">Expo</span><span class="chip">Microservices</span><span class="chip">Video pipeline</span><span class="chip">OTA</span></div></div>
+      <div><div class="k"><i>01</i> Co-founder &amp; CTO · Social</div><h3>Hamsey</h3><p>Proximity-based social networking app: meet people nearby, safely. Expo app on a fleet of Go services, with a dedicated chat microservice, a video processing pipeline, background workers, admin dashboards and an open-source CodePush-compatible OTA update server.</p><div class="chips"><span class="chip">Go</span><span class="chip">Expo</span><span class="chip">Microservices</span><span class="chip">Video pipeline</span><span class="chip">OTA</span></div></div>
       <div class="r"><div class="modules"><div><b>Nearby discovery</b><span>Location-aware matching</span></div><div><b>Chat service</b><span>Separate Go microservice</span></div><div><b>Video processor</b><span>Async transcoding workers</span></div><div><b>Hamsey OTA</b><span>Open source, CodePush compatible</span></div></div><a class="link" href="https://hamsey.co" target="_blank" rel="noopener">hamsey.co ↗</a></div>
       <div class="big">HM</div>
     </article>
-    <article class="scard c6">
-      <div><div class="k"><i>06</i> Founder · Audio</div><h3>Farishta FM</h3><p>Islamic audio app: stories and recitations that calm the mind, ease anxiety and support spiritual growth. Streaming library, playlists and offline listening, built for daily use.</p><div class="chips"><span class="chip">Expo</span><span class="chip">Go</span><span class="chip">Audio streaming</span><span class="chip">Offline</span></div></div>
+    <article class="scard c2">
+      <div><div class="k"><i>02</i> Founder · Audio</div><h3>Farishta FM</h3><p>Islamic audio app: stories and recitations that calm the mind, ease anxiety and support spiritual growth. Streaming library, playlists and offline listening, built for daily use.</p><div class="chips"><span class="chip">Expo</span><span class="chip">Go</span><span class="chip">Audio streaming</span><span class="chip">Offline</span></div></div>
       <div class="r"><div class="modules"><div><b>Audio library</b><span>Stories, duas, recitations</span></div><div><b>Background play</b><span>Lock-screen controls</span></div><div><b>Offline</b><span>Download for later</span></div><div><b>Daily habit</b><span>Reminders and streaks</span></div></div><a class="link" href="https://farishtafm.com" target="_blank" rel="noopener">farishtafm.com ↗</a></div>
       <div class="big">FM</div>
+    </article>
+    <article class="scard c3">
+      <div><div class="k"><i>03</i> Founder &amp; CTO · Healthcare</div><h3>Medyzen</h3><p>Zero-investment managed pharmacy inside hospitals. A patient app, in-hospital kiosk, rider app and three operator panels on one Go backend, with live Razorpay payments, prescription processing and DPDP-grade patient data handling.</p><div class="chips"><span class="chip">Go</span><span class="chip">Postgres</span><span class="chip">Expo</span><span class="chip">React · AntD</span><span class="chip">AWS · Terraform</span></div></div>
+      <div class="r"><div class="modules"><div><b>Pharmacy platform</b><span>3 apps, 3 panels, 23 repos</span></div><div><b>Clinic OS</b><span>EMR with row-level tenancy, offline PWA</span></div><div><b>DoctorClub</b><span>Private network for licensed doctors</span></div><div><b>Internal platform</b><span>Test lab, cost engine, hiring ATS</span></div></div><a class="link" href="https://www.medyzen.in" target="_blank" rel="noopener">medyzen.in ↗</a></div>
+      <div class="big">MZ</div>
+    </article>
+    <article class="scard c4">
+      <div><div class="k"><i>04</i> Founder · AI</div><h3>Momo AI</h3><p>AI chief of staff for Gmail and Calendar. Drafts replies in your voice, chases follow-ups, books meetings and briefs you every morning. Every send is approval-gated. A browser agent, job search and travel tools are built in.</p><div class="chips"><span class="chip">Go · Fiber</span><span class="chip">TypeScript</span><span class="chip">Gemini · Claude</span><span class="chip">Playwright</span><span class="chip">Google OAuth</span></div></div>
+      <div class="r"><div class="modules"><div><b>Approval gate</b><span>Nothing leaves without a tap</span></div><div><b>Browser agent</b><span>Opens, acts, uploads, submits</span></div><div><b>Morning brief</b><span>Inbox + calendar, one card</span></div><div><b>Admin panel</b><span>admin.askmomo.app</span></div></div><a class="link" href="https://askmomo.app" target="_blank" rel="noopener">askmomo.app ↗</a></div>
+      <div class="big">MO</div>
+    </article>
+    <article class="scard c5">
+      <div><div class="k"><i>05</i> Founder · Security</div><h3>TheVibe<br>Security</h3><p>Free vulnerability scanner for apps built with Lovable, Bolt and Cursor. Finds exposed keys, open databases and risky settings, explains the fix, and can open the fix PR. INR and USD billing, global customers.</p><div class="chips"><span class="chip">Go</span><span class="chip">Next.js</span><span class="chip">Cloudflare Workers</span><span class="chip">Cloud Run</span><span class="chip">Razorpay · Dodo</span></div></div>
+      <div class="r"><div class="modules"><div><b>Scan jobs</b><span>Cloud Run, isolated per target</span></div><div><b>Fix PRs</b><span>GitHub App opens the patch</span></div><div><b>Billing</b><span>Razorpay INR, Dodo USD</span></div><div><b>Admin</b><span>Behind Cloudflare Access</span></div></div><a class="link" href="https://thevibesecurity.com" target="_blank" rel="noopener">thevibesecurity.com ↗</a></div>
+      <div class="big">VS</div>
+    </article>
+    <article class="scard c6">
+      <div><div class="k"><i>06</i> Founder · Travel B2B2C</div><h3>Rahi</h3><p>Group-trip software for Indian tour operators. One dashboard for itinerary, rooming, headcount, payments and SOS, plus an app for every traveller and trip captain, with live location and realtime channels.</p><div class="chips"><span class="chip">Go</span><span class="chip">Expo</span><span class="chip">React · Vite</span><span class="chip">WebSocket</span><span class="chip">Cloudflare</span></div></div>
+      <div class="r"><div class="modules"><div><b>Operator dashboard</b><span>Trips, rooming, headcount</span></div><div><b>Traveller app</b><span>Itinerary, SOS, payments</span></div><div><b>Realtime</b><span>WebSocket channels per trip</span></div><div><b>Multi-tenant</b><span>One API, many operators</span></div></div><a class="link" href="https://rahi.club" target="_blank" rel="noopener">rahi.club ↗</a></div>
+      <div class="big">RH</div>
     </article>
   </div>
 </section>
@@ -311,18 +311,18 @@ h2 em{font-style:normal;color:var(--violet-2)}
     <div class="hline"></div>
     <div class="htrack" id="htrack">
       <div class="yearblk"><div class="y">20<b>26</b></div></div>
+      <div class="ent founder live"><div class="top"><span class="f">Co-founder · CTO</span><span class="l">Live</span></div><h4>Hamsey</h4><p>Proximity-based social app on Go microservices: chat, video processing, workers, admin dashboards, open-source OTA server.</p><div class="tech">Go · Expo · hamsey.co · 10 repos</div></div>
+      <div class="ent founder live"><div class="top"><span class="f">Founder</span><span class="l">Live</span></div><h4>Farishta FM</h4><p>Islamic audio app: calming stories and recitations with offline listening.</p><div class="tech">Expo · Go · farishtafm.com</div></div>
       <div class="ent founder live"><div class="top"><span class="f">Founder · CTO</span><span class="l">Live</span></div><h4>Medyzen</h4><p>Managed hospital pharmacy platform, Clinic OS EMR, DoctorClub. Three apps, three panels, one Go backend.</p><div class="tech">Go · Expo · React · AWS · 23 repos</div></div>
       <div class="ent founder live"><div class="top"><span class="f">Founder</span><span class="l">Live</span></div><h4>Momo AI</h4><p>Personal AI assistant for Gmail and Calendar with an approval gate on every action.</p><div class="tech">Go · TypeScript · Gemini · askmomo.app</div></div>
       <div class="ent founder live"><div class="top"><span class="f">Founder</span><span class="l">Live</span></div><h4>TheVibeSecurity</h4><p>Security scanner for AI-built apps, with fix PRs and global billing.</p><div class="tech">Go · Next.js · Cloudflare · thevibesecurity.com</div></div>
       <div class="ent founder live"><div class="top"><span class="f">Founder</span><span class="l">Live</span></div><h4>Rahi</h4><p>Group-trip operations software for tour operators in India.</p><div class="tech">Go · Expo · React · rahi.club</div></div>
-      <div class="ent founder live"><div class="top"><span class="f">Founder</span><span class="l">Live</span></div><h4>Farishta FM</h4><p>Islamic audio app: calming stories and recitations with offline listening.</p><div class="tech">Expo · Go · farishtafm.com</div></div>
       <div class="ent live"><div class="top"><span>Client</span><span class="l">Live</span></div><h4>Viduralex</h4><p>Law-firm website and CMS, Bar Council Rule 36 compliant, on Cloudflare Workers with Postgres on Azure.</p><div class="tech">Next.js · Postgres · Workers</div></div>
       <div class="ent live"><div class="top"><span>Client</span><span class="l">Live</span></div><h4>Amrielle</h4><p>Site for a personal-branding agency serving founders and executives.</p><div class="tech">TypeScript · Vercel</div></div>
       <div class="ent"><div class="top"><span>Product</span></div><h4>Roomiefy</h4><p>Roommate-matching app: Go backend plus a dedicated chat microservice.</p><div class="tech">Go · React Native · 3 repos</div></div>
       <div class="ent"><div class="top"><span>Product</span></div><h4>RankUp</h4><p>Rank-booster platform: SSR user site, admin panel, API, later split into standalone services.</p><div class="tech">NestJS · Go · React Router 7 · 5 repos</div></div>
 
       <div class="yearblk"><div class="y">20<b>25</b></div></div>
-      <div class="ent founder live"><div class="top"><span class="f">Co-founder · CTO</span><span class="l">Active</span></div><h4>Hamsey</h4><p>Proximity-based social app on Go microservices: chat, video processing, workers, admin dashboards, open-source OTA server.</p><div class="tech">Go · Expo · hamsey.co · 10 repos</div></div>
       <div class="ent"><div class="top"><span>Product</span></div><h4>Jeehub · reviseUPSC</h4><p>Exam-prep apps for JEE and UPSC with a shared Go utility backend.</p><div class="tech">Go · Kotlin · Expo · 4 repos</div></div>
       <div class="ent"><div class="top"><span>Product</span></div><h4>SalesOutreach</h4><p>Outbound sales automation backend.</p><div class="tech">Go</div></div>
       
@@ -420,7 +420,7 @@ h2 em{font-style:normal;color:var(--violet-2)}
   function tick(){var t=new Date().toLocaleTimeString('en-GB',{timeZone:'Asia/Kolkata',hour:'2-digit',minute:'2-digit'});document.getElementById('clock').textContent='JAIPUR '+t;document.getElementById('clock2').textContent=t}
   tick();setInterval(tick,15000);
 
-  var names=['Medyzen','Momo AI','TheVibeSecurity','Rahi','Hamsey','Farishta FM','Clinic OS','DoctorClub','Rbulance','Rollover Money','FindCreators','Jeehub','RankUp','Roomiefy','Viduralex'];
+  var names=['Hamsey','Farishta FM','Medyzen','Momo AI','TheVibeSecurity','Rahi','Clinic OS','DoctorClub','Rbulance','Rollover Money','FindCreators','Jeehub','RankUp','Roomiefy','Viduralex'];
   var mq=document.getElementById('mq'),html='';for(var r=0;r<2;r++)names.forEach(function(n){html+='<span><i>✦</i>'+n+'</span>'});mq.innerHTML=html;
 
   var lenis=null;
